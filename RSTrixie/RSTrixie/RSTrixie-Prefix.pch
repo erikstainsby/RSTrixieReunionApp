@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'RSTrixie' target in the 'RSTrixie' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+	#import "RSTrixie-constants.h"
+#endif

@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		030D479B1501B7A7005C2891 /* RSTrixiePlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030D479A1501B7A7005C2891 /* RSTrixiePlugin.framework */; };
+		030D47A21501B852005C2891 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030D479C1501B852005C2891 /* MainMenu.xib */; };
+		030D47A31501B852005C2891 /* NSView+RSPositionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 030D479E1501B852005C2891 /* NSView+RSPositionView.m */; };
+		030D47A61501BC1C005C2891 /* RSTrixiePlugin.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D479A1501B7A7005C2891 /* RSTrixiePlugin.framework */; };
+		030D47AA1501BC79005C2891 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030D47A91501BC79005C2891 /* WebKit.framework */; };
+		030D47C61501BFE9005C2891 /* GCGenericTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 030D47B01501BFE9005C2891 /* GCGenericTableController.m */; };
+		030D47C71501BFE9005C2891 /* HelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 030D47B21501BFE9005C2891 /* HelpController.m */; };
+		030D47C81501BFE9005C2891 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 030D47B41501BFE9005C2891 /* PreferencesController.m */; };
+		030D47C91501BFE9005C2891 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030D47B51501BFE9005C2891 /* PreferencesController.xib */; };
+		030D47CA1501BFE9005C2891 /* ResponderTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 030D47B71501BFE9005C2891 /* ResponderTrace.m */; };
+		030D47CB1501BFE9005C2891 /* RSTrixie-constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 030D47B91501BFE9005C2891 /* RSTrixie-constants.m */; };
+		030D47CC1501BFE9005C2891 /* RSTrixie.m in Sources */ = {isa = PBXBuildFile; fileRef = 030D47BB1501BFE9005C2891 /* RSTrixie.m */; };
+		030D47CD1501BFE9005C2891 /* RSTrixie.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030D47BC1501BFE9005C2891 /* RSTrixie.xib */; };
+		030D47CE1501BFE9005C2891 /* RSTrixieEditor-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 030D47BD1501BFE9005C2891 /* RSTrixieEditor-Info.plist */; };
+		030D47D11501BFE9005C2891 /* RSTrixieTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 030D47C31501BFE9005C2891 /* RSTrixieTableDelegate.m */; };
+		030D47D21501BFE9005C2891 /* RSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 030D47C51501BFE9005C2891 /* RSWebView.m */; };
+		030D48061502F4C3005C2891 /* PluginsCommonConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 030D48051502F4C2005C2891 /* PluginsCommonConfig.xcconfig */; };
+		030D48171504320B005C2891 /* NotImplementedPlugin.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D48161504320B005C2891 /* NotImplementedPlugin.bundle */; };
+		030D49A615046224005C2891 /* ConditionValue.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49A515046224005C2891 /* ConditionValue.bundle */; };
+		030D49A81504622C005C2891 /* ConditionStatus.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49A71504622C005C2891 /* ConditionStatus.bundle */; };
+		030D49AA1504623D005C2891 /* ConditionHasClass.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49A91504623D005C2891 /* ConditionHasClass.bundle */; };
+		030D49B615046328005C2891 /* ReactionSlideUp.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49B515046328005C2891 /* ReactionSlideUp.bundle */; };
+		030D49B81504632D005C2891 /* ReactionSlideToggle.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49B71504632D005C2891 /* ReactionSlideToggle.bundle */; };
+		030D49BA15046331005C2891 /* ReactionSlideDown.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49B915046331005C2891 /* ReactionSlideDown.bundle */; };
+		030D49BC15046338005C2891 /* ReactionShow.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49BB15046338005C2891 /* ReactionShow.bundle */; };
+		030D49C015046349005C2891 /* ReactionHide.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49BF15046349005C2891 /* ReactionHide.bundle */; };
+		030D49C215046350005C2891 /* ReactionFadeToggle.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49C115046350005C2891 /* ReactionFadeToggle.bundle */; };
+		030D49C415046356005C2891 /* ReactionFadeTo.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49C315046356005C2891 /* ReactionFadeTo.bundle */; };
+		030D49C61504635D005C2891 /* ReactionFadeOut.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49C51504635D005C2891 /* ReactionFadeOut.bundle */; };
+		030D49C815046361005C2891 /* ReactionFadeIn.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49C715046361005C2891 /* ReactionFadeIn.bundle */; };
+		030D49CA15046366005C2891 /* ReactionClassAdd.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49C915046366005C2891 /* ReactionClassAdd.bundle */; };
+		030D49CC15046372005C2891 /* ReactionAnimate.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49CB15046372005C2891 /* ReactionAnimate.bundle */; };
+		030D49CE1504638A005C2891 /* ActionUnload.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49CD1504638A005C2891 /* ActionUnload.bundle */; };
+		030D49D01504638D005C2891 /* ActionSubmit.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49CF1504638D005C2891 /* ActionSubmit.bundle */; };
+		030D49D215046391005C2891 /* ActionSelect.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49D115046391005C2891 /* ActionSelect.bundle */; };
+		030D49D4150463CB005C2891 /* ActionScroll.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49D3150463CB005C2891 /* ActionScroll.bundle */; };
+		030D49D6150463CE005C2891 /* ActionResize.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49D5150463CD005C2891 /* ActionResize.bundle */; };
+		030D49D8150463D1005C2891 /* ActionMouseUp.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49D7150463D1005C2891 /* ActionMouseUp.bundle */; };
+		030D49DA150463D4005C2891 /* ActionMouseOver.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49D9150463D4005C2891 /* ActionMouseOver.bundle */; };
+		030D49DC150463D8005C2891 /* ActionMouseOut.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49DB150463D8005C2891 /* ActionMouseOut.bundle */; };
+		030D49DE150463DB005C2891 /* ActionMouseDown.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49DD150463DB005C2891 /* ActionMouseDown.bundle */; };
+		030D49E0150463E3005C2891 /* ActionKeyUp.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49DF150463E3005C2891 /* ActionKeyUp.bundle */; };
+		030D49E2150463E8005C2891 /* ActionFocus.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49E1150463E8005C2891 /* ActionFocus.bundle */; };
+		030D49E4150463F3005C2891 /* ActionDrop.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49E3150463F3005C2891 /* ActionDrop.bundle */; };
+		030D49E6150463F8005C2891 /* ActionDoubleClick.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49E5150463F8005C2891 /* ActionDoubleClick.bundle */; };
+		030D49E8150463FB005C2891 /* ActionClick.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49E7150463FB005C2891 /* ActionClick.bundle */; };
+		030D49EA15046403005C2891 /* ActionChange.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49E915046403005C2891 /* ActionChange.bundle */; };
+		030D49EC15046408005C2891 /* ActionBlur.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030D49EB15046408005C2891 /* ActionBlur.bundle */; };
+		031610C814ECBDB5001FFC9F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031610C714ECBDB5001FFC9F /* Cocoa.framework */; };
+		031610D214ECBDB5001FFC9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 031610D014ECBDB5001FFC9F /* InfoPlist.strings */; };
+		031610D414ECBDB5001FFC9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 031610D314ECBDB5001FFC9F /* main.m */; };
+		031610D814ECBDB5001FFC9F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 031610D614ECBDB5001FFC9F /* Credits.rtf */; };
+		031610DB14ECBDB5001FFC9F /* RSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 031610DA14ECBDB5001FFC9F /* RSAppDelegate.m */; };
+		03644394150AC9D2003623AA /* ReactionClassToggle.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03644393150AC9D2003623AA /* ReactionClassToggle.bundle */; };
+		03644396150AC9F4003623AA /* ReactionClassRemove.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03644395150AC9F4003623AA /* ReactionClassRemove.bundle */; };
+		036443CE150AD898003623AA /* ReactionToggle.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 036443CD150AD898003623AA /* ReactionToggle.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		031610E614ECBE92001FFC9F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				030D47A61501BC1C005C2891 /* RSTrixiePlugin.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0316114314ECC2BB001FFC9F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				030D48171504320B005C2891 /* NotImplementedPlugin.bundle in CopyFiles */,
+				030D49EC15046408005C2891 /* ActionBlur.bundle in CopyFiles */,
+				030D49EA15046403005C2891 /* ActionChange.bundle in CopyFiles */,
+				030D49E8150463FB005C2891 /* ActionClick.bundle in CopyFiles */,
+				030D49E6150463F8005C2891 /* ActionDoubleClick.bundle in CopyFiles */,
+				030D49E4150463F3005C2891 /* ActionDrop.bundle in CopyFiles */,
+				030D49E2150463E8005C2891 /* ActionFocus.bundle in CopyFiles */,
+				030D49E0150463E3005C2891 /* ActionKeyUp.bundle in CopyFiles */,
+				030D49DE150463DB005C2891 /* ActionMouseDown.bundle in CopyFiles */,
+				030D49DC150463D8005C2891 /* ActionMouseOut.bundle in CopyFiles */,
+				030D49DA150463D4005C2891 /* ActionMouseOver.bundle in CopyFiles */,
+				030D49D8150463D1005C2891 /* ActionMouseUp.bundle in CopyFiles */,
+				030D49D6150463CE005C2891 /* ActionResize.bundle in CopyFiles */,
+				030D49D4150463CB005C2891 /* ActionScroll.bundle in CopyFiles */,
+				030D49D215046391005C2891 /* ActionSelect.bundle in CopyFiles */,
+				030D49D01504638D005C2891 /* ActionSubmit.bundle in CopyFiles */,
+				030D49CE1504638A005C2891 /* ActionUnload.bundle in CopyFiles */,
+				030D49CC15046372005C2891 /* ReactionAnimate.bundle in CopyFiles */,
+				030D49CA15046366005C2891 /* ReactionClassAdd.bundle in CopyFiles */,
+				03644396150AC9F4003623AA /* ReactionClassRemove.bundle in CopyFiles */,
+				03644394150AC9D2003623AA /* ReactionClassToggle.bundle in CopyFiles */,
+				030D49C815046361005C2891 /* ReactionFadeIn.bundle in CopyFiles */,
+				030D49C61504635D005C2891 /* ReactionFadeOut.bundle in CopyFiles */,
+				030D49C415046356005C2891 /* ReactionFadeTo.bundle in CopyFiles */,
+				030D49C215046350005C2891 /* ReactionFadeToggle.bundle in CopyFiles */,
+				030D49C015046349005C2891 /* ReactionHide.bundle in CopyFiles */,
+				030D49BC15046338005C2891 /* ReactionShow.bundle in CopyFiles */,
+				036443CE150AD898003623AA /* ReactionToggle.bundle in CopyFiles */,
+				030D49BA15046331005C2891 /* ReactionSlideDown.bundle in CopyFiles */,
+				030D49B81504632D005C2891 /* ReactionSlideToggle.bundle in CopyFiles */,
+				030D49B615046328005C2891 /* ReactionSlideUp.bundle in CopyFiles */,
+				030D49AA1504623D005C2891 /* ConditionHasClass.bundle in CopyFiles */,
+				030D49A81504622C005C2891 /* ConditionStatus.bundle in CopyFiles */,
+				030D49A615046224005C2891 /* ConditionValue.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		030D479A1501B7A7005C2891 /* RSTrixiePlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSTrixiePlugin.framework; path = ../../../../../Library/Frameworks/RSTrixiePlugin.framework; sourceTree = "<group>"; };
+		030D479C1501B852005C2891 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		030D479D1501B852005C2891 /* NSView+RSPositionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+RSPositionView.h"; sourceTree = "<group>"; };
+		030D479E1501B852005C2891 /* NSView+RSPositionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RSPositionView.m"; sourceTree = "<group>"; };
+		030D47A91501BC79005C2891 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		030D47AF1501BFE9005C2891 /* GCGenericTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGenericTableController.h; sourceTree = "<group>"; };
+		030D47B01501BFE9005C2891 /* GCGenericTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGenericTableController.m; sourceTree = "<group>"; };
+		030D47B11501BFE9005C2891 /* HelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpController.h; sourceTree = "<group>"; };
+		030D47B21501BFE9005C2891 /* HelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpController.m; sourceTree = "<group>"; };
+		030D47B31501BFE9005C2891 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		030D47B41501BFE9005C2891 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		030D47B51501BFE9005C2891 /* PreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
+		030D47B61501BFE9005C2891 /* ResponderTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponderTrace.h; sourceTree = "<group>"; };
+		030D47B71501BFE9005C2891 /* ResponderTrace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponderTrace.m; sourceTree = "<group>"; };
+		030D47B81501BFE9005C2891 /* RSTrixie-constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RSTrixie-constants.h"; sourceTree = "<group>"; };
+		030D47B91501BFE9005C2891 /* RSTrixie-constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RSTrixie-constants.m"; sourceTree = "<group>"; };
+		030D47BA1501BFE9005C2891 /* RSTrixie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTrixie.h; sourceTree = "<group>"; };
+		030D47BB1501BFE9005C2891 /* RSTrixie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTrixie.m; sourceTree = "<group>"; };
+		030D47BC1501BFE9005C2891 /* RSTrixie.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSTrixie.xib; sourceTree = "<group>"; };
+		030D47BD1501BFE9005C2891 /* RSTrixieEditor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RSTrixieEditor-Info.plist"; sourceTree = "<group>"; };
+		030D47BE1501BFE9005C2891 /* RSTrixieEditor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RSTrixieEditor-Prefix.pch"; sourceTree = "<group>"; };
+		030D47C21501BFE9005C2891 /* RSTrixieTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTrixieTableDelegate.h; sourceTree = "<group>"; };
+		030D47C31501BFE9005C2891 /* RSTrixieTableDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTrixieTableDelegate.m; sourceTree = "<group>"; };
+		030D47C41501BFE9005C2891 /* RSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWebView.h; sourceTree = "<group>"; };
+		030D47C51501BFE9005C2891 /* RSWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWebView.m; sourceTree = "<group>"; };
+		030D48051502F4C2005C2891 /* PluginsCommonConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = PluginsCommonConfig.xcconfig; sourceTree = "<group>"; };
+		030D48161504320B005C2891 /* NotImplementedPlugin.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NotImplementedPlugin.bundle; sourceTree = "<group>"; };
+		030D49A515046224005C2891 /* ConditionValue.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ConditionValue.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49A71504622C005C2891 /* ConditionStatus.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ConditionStatus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49A91504623D005C2891 /* ConditionHasClass.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ConditionHasClass.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49B515046328005C2891 /* ReactionSlideUp.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionSlideUp.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49B71504632D005C2891 /* ReactionSlideToggle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionSlideToggle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49B915046331005C2891 /* ReactionSlideDown.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionSlideDown.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49BB15046338005C2891 /* ReactionShow.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionShow.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49BF15046349005C2891 /* ReactionHide.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionHide.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49C115046350005C2891 /* ReactionFadeToggle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionFadeToggle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49C315046356005C2891 /* ReactionFadeTo.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionFadeTo.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49C51504635D005C2891 /* ReactionFadeOut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionFadeOut.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49C715046361005C2891 /* ReactionFadeIn.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionFadeIn.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49C915046366005C2891 /* ReactionClassAdd.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionClassAdd.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49CB15046372005C2891 /* ReactionAnimate.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionAnimate.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49CD1504638A005C2891 /* ActionUnload.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionUnload.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49CF1504638D005C2891 /* ActionSubmit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionSubmit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49D115046391005C2891 /* ActionSelect.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionSelect.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49D3150463CB005C2891 /* ActionScroll.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionScroll.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49D5150463CD005C2891 /* ActionResize.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionResize.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49D7150463D1005C2891 /* ActionMouseUp.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionMouseUp.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49D9150463D4005C2891 /* ActionMouseOver.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionMouseOver.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49DB150463D8005C2891 /* ActionMouseOut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionMouseOut.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49DD150463DB005C2891 /* ActionMouseDown.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionMouseDown.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49DF150463E3005C2891 /* ActionKeyUp.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionKeyUp.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49E1150463E8005C2891 /* ActionFocus.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionFocus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49E3150463F3005C2891 /* ActionDrop.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionDrop.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49E5150463F8005C2891 /* ActionDoubleClick.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionDoubleClick.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49E7150463FB005C2891 /* ActionClick.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionClick.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49E915046403005C2891 /* ActionChange.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionChange.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030D49EB15046408005C2891 /* ActionBlur.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionBlur.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		031610C314ECBDB5001FFC9F /* RSTrixie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSTrixie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		031610C714ECBDB5001FFC9F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		031610CA14ECBDB5001FFC9F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		031610CB14ECBDB5001FFC9F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		031610CC14ECBDB5001FFC9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		031610CF14ECBDB5001FFC9F /* RSTrixie-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RSTrixie-Info.plist"; sourceTree = "<group>"; };
+		031610D114ECBDB5001FFC9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		031610D314ECBDB5001FFC9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		031610D514ECBDB5001FFC9F /* RSTrixie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSTrixie-Prefix.pch"; sourceTree = "<group>"; };
+		031610D714ECBDB5001FFC9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		031610D914ECBDB5001FFC9F /* RSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppDelegate.h; sourceTree = "<group>"; };
+		031610DA14ECBDB5001FFC9F /* RSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
+		03644393150AC9D2003623AA /* ReactionClassToggle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionClassToggle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		03644395150AC9F4003623AA /* ReactionClassRemove.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionClassRemove.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		036443CD150AD898003623AA /* ReactionToggle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionToggle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		031610C014ECBDB5001FFC9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				030D47AA1501BC79005C2891 /* WebKit.framework in Frameworks */,
+				030D479B1501B7A7005C2891 /* RSTrixiePlugin.framework in Frameworks */,
+				031610C814ECBDB5001FFC9F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		030D4A5115047134005C2891 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				030D48161504320B005C2891 /* NotImplementedPlugin.bundle */,
+				030D49EB15046408005C2891 /* ActionBlur.bundle */,
+				030D49E915046403005C2891 /* ActionChange.bundle */,
+				030D49E7150463FB005C2891 /* ActionClick.bundle */,
+				030D49E5150463F8005C2891 /* ActionDoubleClick.bundle */,
+				030D49E3150463F3005C2891 /* ActionDrop.bundle */,
+				030D49E1150463E8005C2891 /* ActionFocus.bundle */,
+				030D49DF150463E3005C2891 /* ActionKeyUp.bundle */,
+				030D49DD150463DB005C2891 /* ActionMouseDown.bundle */,
+				030D49DB150463D8005C2891 /* ActionMouseOut.bundle */,
+				030D49D9150463D4005C2891 /* ActionMouseOver.bundle */,
+				030D49D7150463D1005C2891 /* ActionMouseUp.bundle */,
+				030D49D5150463CD005C2891 /* ActionResize.bundle */,
+				030D49D3150463CB005C2891 /* ActionScroll.bundle */,
+				030D49D115046391005C2891 /* ActionSelect.bundle */,
+				030D49CF1504638D005C2891 /* ActionSubmit.bundle */,
+				030D49CD1504638A005C2891 /* ActionUnload.bundle */,
+				030D49CB15046372005C2891 /* ReactionAnimate.bundle */,
+				030D49C915046366005C2891 /* ReactionClassAdd.bundle */,
+				03644395150AC9F4003623AA /* ReactionClassRemove.bundle */,
+				03644393150AC9D2003623AA /* ReactionClassToggle.bundle */,
+				030D49C715046361005C2891 /* ReactionFadeIn.bundle */,
+				030D49C51504635D005C2891 /* ReactionFadeOut.bundle */,
+				030D49C315046356005C2891 /* ReactionFadeTo.bundle */,
+				030D49C115046350005C2891 /* ReactionFadeToggle.bundle */,
+				030D49BF15046349005C2891 /* ReactionHide.bundle */,
+				030D49BB15046338005C2891 /* ReactionShow.bundle */,
+				036443CD150AD898003623AA /* ReactionToggle.bundle */,
+				030D49B915046331005C2891 /* ReactionSlideDown.bundle */,
+				030D49B71504632D005C2891 /* ReactionSlideToggle.bundle */,
+				030D49B515046328005C2891 /* ReactionSlideUp.bundle */,
+				030D49A91504623D005C2891 /* ConditionHasClass.bundle */,
+				030D49A71504622C005C2891 /* ConditionStatus.bundle */,
+				030D49A515046224005C2891 /* ConditionValue.bundle */,
+			);
+			name = Plugins;
+			sourceTree = "<group>";
+		};
+		031610B814ECBDB5001FFC9F = {
+			isa = PBXGroup;
+			children = (
+				030D48051502F4C2005C2891 /* PluginsCommonConfig.xcconfig */,
+				031610CD14ECBDB5001FFC9F /* RSTrixie */,
+				030D4A5115047134005C2891 /* Plugins */,
+				031610C614ECBDB5001FFC9F /* Frameworks */,
+				031610C414ECBDB5001FFC9F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		031610C414ECBDB5001FFC9F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				031610C314ECBDB5001FFC9F /* RSTrixie.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		031610C614ECBDB5001FFC9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				030D479A1501B7A7005C2891 /* RSTrixiePlugin.framework */,
+				031610C714ECBDB5001FFC9F /* Cocoa.framework */,
+				030D47A91501BC79005C2891 /* WebKit.framework */,
+				031610C914ECBDB5001FFC9F /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		031610C914ECBDB5001FFC9F /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				031610CA14ECBDB5001FFC9F /* AppKit.framework */,
+				031610CB14ECBDB5001FFC9F /* CoreData.framework */,
+				031610CC14ECBDB5001FFC9F /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		031610CD14ECBDB5001FFC9F /* RSTrixie */ = {
+			isa = PBXGroup;
+			children = (
+				031610D914ECBDB5001FFC9F /* RSAppDelegate.h */,
+				031610DA14ECBDB5001FFC9F /* RSAppDelegate.m */,
+				030D47B31501BFE9005C2891 /* PreferencesController.h */,
+				030D47B41501BFE9005C2891 /* PreferencesController.m */,
+				030D47B51501BFE9005C2891 /* PreferencesController.xib */,
+				030D47BA1501BFE9005C2891 /* RSTrixie.h */,
+				030D47BB1501BFE9005C2891 /* RSTrixie.m */,
+				030D47BC1501BFE9005C2891 /* RSTrixie.xib */,
+				030D47B11501BFE9005C2891 /* HelpController.h */,
+				030D47B21501BFE9005C2891 /* HelpController.m */,
+				030D47C21501BFE9005C2891 /* RSTrixieTableDelegate.h */,
+				030D47C31501BFE9005C2891 /* RSTrixieTableDelegate.m */,
+				030D47C41501BFE9005C2891 /* RSWebView.h */,
+				030D47C51501BFE9005C2891 /* RSWebView.m */,
+				030D479C1501B852005C2891 /* MainMenu.xib */,
+				031610CE14ECBDB5001FFC9F /* Supporting Files */,
+			);
+			path = RSTrixie;
+			sourceTree = "<group>";
+		};
+		031610CE14ECBDB5001FFC9F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				030D47AF1501BFE9005C2891 /* GCGenericTableController.h */,
+				030D47B01501BFE9005C2891 /* GCGenericTableController.m */,
+				030D47B61501BFE9005C2891 /* ResponderTrace.h */,
+				030D47B71501BFE9005C2891 /* ResponderTrace.m */,
+				030D47BD1501BFE9005C2891 /* RSTrixieEditor-Info.plist */,
+				030D47BE1501BFE9005C2891 /* RSTrixieEditor-Prefix.pch */,
+				030D479D1501B852005C2891 /* NSView+RSPositionView.h */,
+				030D479E1501B852005C2891 /* NSView+RSPositionView.m */,
+				030D47B81501BFE9005C2891 /* RSTrixie-constants.h */,
+				030D47B91501BFE9005C2891 /* RSTrixie-constants.m */,
+				031610CF14ECBDB5001FFC9F /* RSTrixie-Info.plist */,
+				031610D014ECBDB5001FFC9F /* InfoPlist.strings */,
+				031610D314ECBDB5001FFC9F /* main.m */,
+				031610D514ECBDB5001FFC9F /* RSTrixie-Prefix.pch */,
+				031610D614ECBDB5001FFC9F /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		031610C214ECBDB5001FFC9F /* RSTrixie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 031610E114ECBDB5001FFC9F /* Build configuration list for PBXNativeTarget "RSTrixie" */;
+			buildPhases = (
+				031610BF14ECBDB5001FFC9F /* Sources */,
+				031610C014ECBDB5001FFC9F /* Frameworks */,
+				031610C114ECBDB5001FFC9F /* Resources */,
+				031610E614ECBE92001FFC9F /* CopyFiles */,
+				0316114314ECC2BB001FFC9F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RSTrixie;
+			productName = RSTrixie;
+			productReference = 031610C314ECBDB5001FFC9F /* RSTrixie.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		031610BA14ECBDB5001FFC9F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Roaring Sky";
+			};
+			buildConfigurationList = 031610BD14ECBDB5001FFC9F /* Build configuration list for PBXProject "RSTrixie" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 031610B814ECBDB5001FFC9F;
+			productRefGroup = 031610C414ECBDB5001FFC9F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				031610C214ECBDB5001FFC9F /* RSTrixie */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		031610C114ECBDB5001FFC9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031610D214ECBDB5001FFC9F /* InfoPlist.strings in Resources */,
+				031610D814ECBDB5001FFC9F /* Credits.rtf in Resources */,
+				030D47A21501B852005C2891 /* MainMenu.xib in Resources */,
+				030D47C91501BFE9005C2891 /* PreferencesController.xib in Resources */,
+				030D47CD1501BFE9005C2891 /* RSTrixie.xib in Resources */,
+				030D47CE1501BFE9005C2891 /* RSTrixieEditor-Info.plist in Resources */,
+				030D48061502F4C3005C2891 /* PluginsCommonConfig.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		031610BF14ECBDB5001FFC9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031610D414ECBDB5001FFC9F /* main.m in Sources */,
+				031610DB14ECBDB5001FFC9F /* RSAppDelegate.m in Sources */,
+				030D47A31501B852005C2891 /* NSView+RSPositionView.m in Sources */,
+				030D47C61501BFE9005C2891 /* GCGenericTableController.m in Sources */,
+				030D47C71501BFE9005C2891 /* HelpController.m in Sources */,
+				030D47C81501BFE9005C2891 /* PreferencesController.m in Sources */,
+				030D47CA1501BFE9005C2891 /* ResponderTrace.m in Sources */,
+				030D47CB1501BFE9005C2891 /* RSTrixie-constants.m in Sources */,
+				030D47CC1501BFE9005C2891 /* RSTrixie.m in Sources */,
+				030D47D11501BFE9005C2891 /* RSTrixieTableDelegate.m in Sources */,
+				030D47D21501BFE9005C2891 /* RSWebView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		031610D014ECBDB5001FFC9F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				031610D114ECBDB5001FFC9F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		031610D614ECBDB5001FFC9F /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				031610D714ECBDB5001FFC9F /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		031610DF14ECBDB5001FFC9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		031610E014ECBDB5001FFC9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		031610E214ECBDB5001FFC9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"~/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RSTrixie/RSTrixie-Prefix.pch";
+				INFOPLIST_FILE = "RSTrixie/RSTrixie-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		031610E314ECBDB5001FFC9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"~/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RSTrixie/RSTrixie-Prefix.pch";
+				INFOPLIST_FILE = "RSTrixie/RSTrixie-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		031610BD14ECBDB5001FFC9F /* Build configuration list for PBXProject "RSTrixie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				031610DF14ECBDB5001FFC9F /* Debug */,
+				031610E014ECBDB5001FFC9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		031610E114ECBDB5001FFC9F /* Build configuration list for PBXNativeTarget "RSTrixie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				031610E214ECBDB5001FFC9F /* Debug */,
+				031610E314ECBDB5001FFC9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 031610BA14ECBDB5001FFC9F /* Project object */;
+}

@@ -1,0 +1,10 @@
+//
+//  PluginsCommonConfig.xcconfig
+//  
+//
+//  Created by Erik Stainsby on 12-02-18.
+//  Copyright (c) 2012 Roaring Sky. All rights reserved.
+//
+INSTALL_PATH = @executable_path/../Plugins
+LD_RUNPATH_SEARCH_PATHS = @executable_path/../Frameworks
+FRAMEWORK_SEARCH_PATHS = ~/Library/Frameworks

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Actions">
+      <FileRef
+         location = "group:../Plugins/Actions/ActionBlur/ActionBlur.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionChange/ActionChange.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionClick/ActionClick.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionDoubleClick/ActionDoubleClick.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionDrop/ActionDrop.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionFocus/ActionFocus.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionKeyUp/ActionKeyUp.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionMouseDown/ActionMouseDown.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionMouseOut/ActionMouseOut.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionMouseOver/ActionMouseOver.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionMouseUp/ActionMouseUp.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionResize/ActionResize.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionScroll/ActionScroll.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionSelect/ActionSelect.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionSubmit/ActionSubmit.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionUnload/ActionUnload.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Reactions">
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionAnimate/ReactionAnimate.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionAddClass/ReactionClassAdd.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionRemoveClass/ReactionClassRemove.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionClassToggle/ReactionClassToggle.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionFadeIn/ReactionFadeIn.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionFadeOut/ReactionFadeOut.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionFadeTo/ReactionFadeTo.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionFadeToggle/ReactionFadeToggle.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionHide/ReactionHide.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionShow/ReactionShow.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionToggle/ReactionToggle.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionSlideDown/ReactionSlideDown.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionSlideToggle/ReactionSlideToggle.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionSlideUp/ReactionSlideUp.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Conditions">
+      <FileRef
+         location = "group:../Plugins/Conditions/ConditionHasClass/ConditionHasClass.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Conditions/ConditionStatus/ConditionStatus.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Conditions/ConditionValue/ConditionValue.xcodeproj">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "container:RSTrixie/RSTrixie.xcodeproj">
+   </FileRef>
+</Workspace>
