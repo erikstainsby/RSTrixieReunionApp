@@ -7,7 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RSTrixiePlugin/RSTrixiePlugin.h>
 
-@interface RSIntermediateRuleDelegate : NSObject
+@interface RSIntermediateRuleDelegate : NSObject < NSTableViewDelegate, NSTableViewDataSource >
+
+@property (retain) IBOutlet NSTableView * rulePartsTable;
+@property (retain) IBOutlet NSMutableArray * rulePartsData;
+
+- (void) addComment: (RSCommentRule *) rule;
+- (void) addActionRule: (RSActionRule *) rule;
+- (void) addReactionRule: (RSReactionRule *) rule;
+- (void) addConditionRule: (RSConditionRule *) rule;
+
+- (RSTrixieRule *) composeRule;
+
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView;
+- (id) tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
+- (IBAction) removeRowFromPartsTable:(id)sender;
 
 @end

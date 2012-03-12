@@ -10,6 +10,7 @@
 #import <WebKit/WebKit.h>
 #import <RSTrixiePlugin/RSTrixie.h>
 #import "NSView+RSPositionView.h"
+#import "RSIntermediateRuleDelegate.h"
 
 @interface RSTrixie : NSWindowController < NSComboBoxDataSource, NSComboBoxDelegate, NSTableViewDelegate, NSTableViewDataSource >
 {
@@ -25,12 +26,14 @@
 @property (retain) IBOutlet WebView * webview;
 @property (retain) IBOutlet NSDictionary * pageDict;
 
-
 #pragma mark - Rulte Editor toolbox props
 
 @property (weak) IBOutlet NSPopover *popover;
 @property (weak) IBOutlet NSPopover *reactionPopover;
 @property (weak) IBOutlet NSPopover *conditionPopover;
+
+@property (retain) IBOutlet NSPanel * exportPanel;
+@property (retain) IBOutlet NSTextView * exportEditor;
 
 @property (retain) IBOutlet NSBox * box1;
 @property (retain) IBOutlet NSBox * box2;
@@ -58,11 +61,12 @@
 @property (retain) RSReactionPlugin * activeReactionPlugin;
 @property (retain) RSConditionPlugin * activeConditionPlugin;
 
-
 #pragma mark - Rule Table storage props
 
 @property (retain) IBOutlet NSTableView * ruleTable;
 @property (retain) IBOutlet NSMutableArray * ruleTableData;
+@property (retain) IBOutlet NSTableView * intermediateTable;
+@property (retain) IBOutlet RSIntermediateRuleDelegate * intermediateDelegate;
 
 #pragma mark - Trixie editor methods
 
@@ -77,16 +81,28 @@
 - (IBAction) setReactionSelectorStringValue:(id)sender;
 - (IBAction) setConditionSelectorStringValue:(id)sender;
 
-- (RSTrixieRule *) composeRule;
+- (IBAction) addCommentToIntermediateTable:(id)sender;
+- (IBAction) addActionToIntermediateTable:(id)sender;
+- (IBAction) addReactionToIntermediateTable:(id)sender;
+- (IBAction) addConditionToIntermediateTable:(id)sender;
+
+	//- (RSTrixieRule *) composeRule;	// relocated to intermediateRuleDelegate class - closer to the data
 - (void)		   injectScript;
 - (IBAction) addRule:(id)sender;
 - (IBAction) removeRule:(id)sender;
-- (IBAction) saveRule:(id)sender;
 
-- (id)init;
+- (IBAction) showExportPanel:(id)sender;
+
+- (IBAction) reloadScriptIntoPage:(id)sender;
 
 
+#pragma mark - Table DataSource & Delegate support methods
+
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView;
+- (id) tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 - (void) appendRule:(RSTrixieRule *) rule;
+
 
 #pragma mark - WebView delegate methods
 

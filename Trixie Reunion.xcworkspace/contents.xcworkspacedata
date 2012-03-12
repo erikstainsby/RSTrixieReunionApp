@@ -23,7 +23,19 @@
          location = "group:../Plugins/Actions/ActionFocus/ActionFocus.xcodeproj">
       </FileRef>
       <FileRef
+         location = "group:../Plugins/Actions/ActionKeyDown/ActionKeyDown.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionKeyPress/ActionKeyPress.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:../Plugins/Actions/ActionKeyUp/ActionKeyUp.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionPageLoad/ActionPageLoad.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Actions/ActionPageUnload/ActionPageUnload/ActionPageUnload.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:../Plugins/Actions/ActionMouseDown/ActionMouseDown.xcodeproj">
@@ -49,9 +61,6 @@
       <FileRef
          location = "group:../Plugins/Actions/ActionSubmit/ActionSubmit.xcodeproj">
       </FileRef>
-      <FileRef
-         location = "group:../Plugins/Actions/ActionUnload/ActionUnload.xcodeproj">
-      </FileRef>
    </Group>
    <Group
       location = "container:"
@@ -60,10 +69,10 @@
          location = "group:../Plugins/Reactions/ReactionAnimate/ReactionAnimate.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:../Plugins/Reactions/ReactionAddClass/ReactionClassAdd.xcodeproj">
+         location = "group:../Plugins/Reactions/ReactionClassAdd/ReactionClassAdd.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:../Plugins/Reactions/ReactionRemoveClass/ReactionClassRemove.xcodeproj">
+         location = "group:../Plugins/Reactions/ReactionClassRemove/ReactionClassRemove.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:../Plugins/Reactions/ReactionClassToggle/ReactionClassToggle.xcodeproj">
@@ -87,9 +96,6 @@
          location = "group:../Plugins/Reactions/ReactionShow/ReactionShow.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:../Plugins/Reactions/ReactionToggle/ReactionToggle.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:../Plugins/Reactions/ReactionSlideDown/ReactionSlideDown.xcodeproj">
       </FileRef>
       <FileRef
@@ -97,6 +103,9 @@
       </FileRef>
       <FileRef
          location = "group:../Plugins/Reactions/ReactionSlideUp/ReactionSlideUp.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../Plugins/Reactions/ReactionToggle/ReactionToggle.xcodeproj">
       </FileRef>
    </Group>
    <Group
@@ -107,9 +116,6 @@
       </FileRef>
       <FileRef
          location = "group:../Plugins/Conditions/ConditionStatus/ConditionStatus.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:../Plugins/Conditions/ConditionValue/ConditionValue.xcodeproj">
       </FileRef>
    </Group>
    <FileRef

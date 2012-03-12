@@ -27,10 +27,12 @@
 @synthesize webview;
 @synthesize pageDict;
 
-
 @synthesize popover = _popover;
 @synthesize reactionPopover = _reactionPopover;
 @synthesize conditionPopover = _conditionPopover;
+
+@synthesize exportPanel;
+@synthesize exportEditor;
 
 @synthesize box1;
 @synthesize box2;
@@ -40,7 +42,7 @@
 @synthesize reactionPanel;		// custom view
 @synthesize conditionPanel;		// custom view
 @synthesize commentPanel;
-@synthesize comment = _comment;
+@synthesize comment;			// NSTextField
 
 @synthesize actionPlugins;		// view controllers 
 @synthesize reactionPlugins;	// view controllers 
@@ -58,9 +60,11 @@
 @synthesize activeReactionPlugin;
 @synthesize activeConditionPlugin;
 
-
 @synthesize ruleTable;
 @synthesize ruleTableData;
+
+@synthesize intermediateTable;
+@synthesize intermediateDelegate;
 
 
 - (id)init {
@@ -134,9 +138,14 @@
 	[self showReactionPlugin:	[reactionMenu itemAtIndex:0]];
 	[self showConditionPlugin:	[conditionMenu itemAtIndex:0]];
 	
+	intermediateDelegate = [[RSIntermediateRuleDelegate alloc] init];
+	[intermediateTable setDelegate:intermediateDelegate];
+	[intermediateTable setDataSource:intermediateDelegate];
+	[intermediateDelegate setRulePartsTable:intermediateTable];
+	
 }
 
-- (IBAction) showActionPlugin:(id)sender {
+- (IBAction)	showActionPlugin:(id)sender {
 	
 	NSString * name = [sender title];
 	RSActionPlugin * p  = [sender representedObject];
@@ -153,7 +162,7 @@
 	
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, name);
 }
-- (IBAction) showReactionPlugin:(id)sender {
+- (IBAction)	showReactionPlugin:(id)sender {
 	
 	NSString * name = [sender title];
 	RSReactionPlugin * p  = [sender representedObject];
@@ -170,7 +179,7 @@
 	
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, name);
 }
-- (IBAction) showConditionPlugin:(id)sender {
+- (IBAction)	showConditionPlugin:(id)sender {
 	
 	NSString * name = [sender title];
 	RSConditionPlugin * p  = [sender representedObject];
@@ -188,7 +197,7 @@
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, name);
 }
 
-- (NSURL *) applicationSupportDirectoryURL {
+- (NSURL *)		applicationSupportDirectoryURL {
     static NSURL * _asd = nil;
     if(_asd){
 		return _asd;
@@ -216,7 +225,7 @@
 	NSLog(@"[%04d] %@ %@: %@",__LINE__,[self class],@"_asd",_asd);
     return _asd;
 }
-- (NSArray *) userlandPluginsWithPrefix:(NSString*)prefix {
+- (NSArray *)	userlandPluginsWithPrefix:(NSString*)prefix {
 	
 		// NOT YET IMPLEMENTED STUB	
 	
@@ -228,23 +237,30 @@
 	return userPlugins;
 }
 
-- (IBAction) setActionSelectorStringValue:(id)sender {
+- (IBAction)	setActionSelectorStringValue:(id)sender {
 		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
 	[[activeActionPlugin selectorField] setStringValue:sender];
 }
-- (IBAction) setReactionSelectorStringValue:(id)sender {
+- (IBAction)	setReactionSelectorStringValue:(id)sender {
 		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
 	[[activeReactionPlugin targetField] setStringValue:sender];
 }
-- (IBAction) setConditionSelectorStringValue:(id)sender {
+- (IBAction)	setConditionSelectorStringValue:(id)sender {
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
 		//	[[activeConditionPlugin selectorField] setStringValue:sender];
 }
 
-- (RSTrixieRule*) composeRule {
+
+- (IBAction)	addCommentToIntermediateTable:(id)sender {
+	RSCommentRule * rule = [[RSCommentRule alloc] init];
+	[rule setText:[[self comment] stringValue]];
+	[intermediateDelegate addComment: rule];
+	[[self comment] setStringValue:@""];
+}
+
+- (IBAction)	addActionToIntermediateTable:(id)sender {
 	
 	RSActionRule * actionRule = [[RSActionRule alloc] init];
-	
 	[actionRule setEvent:				[activeActionPlugin event]];
 	if([activeActionPlugin hasSelectorField]) {
 		[actionRule setSelector:		[[activeActionPlugin selectorField] stringValue]];
@@ -256,40 +272,63 @@
 		[actionRule setStopBubbling:	[activeActionPlugin stopBubbling]];
 	}
 	
-	RSReactionRule * reactionRule = [[RSReactionRule alloc] init];
-	[reactionRule setScript: [activeReactionPlugin emitScript]];
-		
-	RSConditionRule * conditionRule = [[RSConditionRule alloc] init];
-	[conditionRule setScript: [activeConditionPlugin expression]];
-	
-	
-	
-		// initialize and set composite rule 
-	RSTrixieRule * rule = [[RSTrixieRule alloc] init];
-	[rule setAction:		actionRule];
-	[rule setReactions:		[NSArray arrayWithObject:reactionRule]];
-	[rule setConditions:	[NSArray arrayWithObject:conditionRule]];
-	[rule setComment:		[[self comment] stringValue]];
-	
-	NSLog(@"%s- [%04d] \n\n%@\n\n", __PRETTY_FUNCTION__, __LINE__, [rule emitScript]);
-	
-	return rule;
+	[intermediateDelegate addActionRule: actionRule];
+	[activeActionPlugin resetForm];
 }
 
-- (IBAction) addRule:(id)sender {
-	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
-	
-	[self appendRule: [self composeRule]];
-	
-		//	[[NSNotificationCenter defaultCenter] postNotificationName:nnRSTrixieStoreNewRuleNotification object:[self composeRule]];
-	
+-(IBAction) addReactionToIntermediateTable:(id)sender {
+	RSReactionRule * reactionRule = [[RSReactionRule alloc] init];
+	[reactionRule setScript: [activeReactionPlugin emitScript]];
+	[intermediateDelegate addReactionRule:reactionRule];
 }
-- (IBAction) removeRule:(id)sender {
-	
+
+-(IBAction) addConditionToIntermediateTable:(id)sender {
+	RSConditionRule * conditionRule = [[RSConditionRule alloc] init];
+	[conditionRule setScript: [activeConditionPlugin expression]];	
+	[intermediateDelegate addConditionRule:conditionRule];
 }
-- (IBAction) saveRule:(id)sender {
-	
+
+- (IBAction)	addRule:(id)sender {
+	RSTrixieRule * rule = [intermediateDelegate composeRule];
+	[self appendRule: rule];
 }
+- (IBAction)	removeRule:(id)sender {
+	NSIndexSet * rows = [ruleTable selectedRowIndexes];
+	[ruleTableData removeObjectsAtIndexes:rows];
+	[ruleTable reloadData];
+}
+
+- (IBAction) showExportPanel:(id)sender {
+	
+		// retrieve the script lines from the tableView' ruleData array
+	NSString * script = [self despoolScript];
+	
+	NSString * page = @"<!-- ** Trixie - jQuery loader helper script [optional] ** -->\n";
+	page = [page stringByAppendingString:@"<script id=\"Your Google API key\" type=\"text/javascript\""];
+	page = [page stringByAppendingFormat:@" src=\"https://www.google.com/jsapi?key=%@\">", [[NSUserDefaults standardUserDefaults] valueForKey:@"googleAPIKey"]];
+	page = [page stringByAppendingString:@"</script>\n"];
+	page = [page stringByAppendingString:@"<script id=\"jquery-loader\" type=\"text/javascript\">"];
+	page = [page stringByAppendingFormat:@"\tgoogle.load('jquery','%@');", [[NSUserDefaults standardUserDefaults] valueForKey:@"jqueryVersion"]];
+	page = [page stringByAppendingString:@"</script>\n"];
+	page = [page stringByAppendingString:@"<script id=\"jquery-ui-loader\">"];
+	page = [page stringByAppendingFormat:@"\tgoogle.load('jquery-ui','%@');", [[NSUserDefaults standardUserDefaults] valueForKey:@"jqueryUIVersion"]];
+	page = [page stringByAppendingString:@"</script>\n\n\n"];
+
+	page = [page stringByAppendingString:@"<!-- ** Trixie generated script ** -->\n"];
+	page = [page stringByAppendingString:@"<script id=\"RSTrixieScript\" type=\"text/javascript\">\njQuery().ready(function($){\n"];
+	page = [page stringByAppendingString: script];
+	page = [page stringByAppendingString:@"}); \n"];
+	page = [page stringByAppendingString:@"</script>\n"];
+	
+	NSFont * font = [[NSFontManager sharedFontManager] fontWithFamily:@"Menlo" traits:NSUnboldFontMask weight:7 size:13];
+	NSDictionary * attr = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontNameAttribute, nil];
+	NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:page attributes:attr];
+	
+	[[exportEditor textStorage] setAttributedString:attrString];
+	
+	[exportPanel orderFront:sender];
+}
+
 
 
 
@@ -309,6 +348,15 @@
 	return [rule valueForKey:[tableColumn identifier]];	
 }
 
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+	
+	NSMutableDictionary * rowData = [ruleTableData objectAtIndex:rowIndex];
+	[rowData setValue:anObject forKey:[aTableColumn identifier]];
+	[ruleTableData replaceObjectAtIndex:rowIndex withObject:rowData];
+	[ruleTable reloadData];
+}
+
+
 - (NSString *) despoolScript {
 	NSString * 	script = @"";
 	for(RSTrixieRule * rule in ruleTableData)
@@ -319,6 +367,7 @@
 }
 
 - (void) appendRule:(RSTrixieRule *) rule {
+	
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 		// add new rule
 	[ruleTableData addObject:rule];
@@ -539,6 +588,11 @@
 
 #pragma mark - Receive instruction to reload html, insert jQuery/-UI if required, and injecting the custom behaviours
 
+- (IBAction) reloadScriptIntoPage:(id)sender {
+	[[webview mainFrame] reloadFromOrigin];
+	[self injectScript];
+}
+
 - (void) injectScript {
 	
 		// retrieve the script lines from the tableView' ruleData array
@@ -571,7 +625,7 @@
 	page = [page stringByAppendingFormat:@"<%@>\n",[pageDict valueForKey:@"bodyTag"]];
 	page = [page stringByAppendingFormat:@"%@\n",[pageDict valueForKey:@"body"]];
 	
-	page = [page stringByAppendingString:@"<!-- ** RSTrixie generated script ** -->\n"];
+	page = [page stringByAppendingString:@"<!-- ** Trixie generated script ** -->\n"];
 	page = [page stringByAppendingString:@"<script id=\"RSTrixieScript\" type=\"text/javascript\">\njQuery().ready(function($){\n"];
 	
 	page = [page stringByAppendingString: script];
