@@ -65,6 +65,8 @@
 		03644394150AC9D2003623AA /* ReactionClassToggle.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03644393150AC9D2003623AA /* ReactionClassToggle.bundle */; };
 		03644396150AC9F4003623AA /* ReactionClassRemove.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03644395150AC9F4003623AA /* ReactionClassRemove.bundle */; };
 		036443CE150AD898003623AA /* ReactionToggle.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 036443CD150AD898003623AA /* ReactionToggle.bundle */; };
+		039DDCB115104F2D00264258 /* DOMElement+RSLDOMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DDCB015104F2D00264258 /* DOMElement+RSLDOMExtensions.m */; };
+		039DDCB51510506500264258 /* RSWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DDCB41510506500264258 /* RSWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -200,6 +202,10 @@
 		03644393150AC9D2003623AA /* ReactionClassToggle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionClassToggle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		03644395150AC9F4003623AA /* ReactionClassRemove.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionClassRemove.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		036443CD150AD898003623AA /* ReactionToggle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ReactionToggle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		039DDCAF15104F2D00264258 /* DOMElement+RSLDOMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOMElement+RSLDOMExtensions.h"; sourceTree = "<group>"; };
+		039DDCB015104F2D00264258 /* DOMElement+RSLDOMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOMElement+RSLDOMExtensions.m"; sourceTree = "<group>"; };
+		039DDCB31510506500264258 /* RSWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWindow.h; sourceTree = "<group>"; };
+		039DDCB41510506500264258 /* RSWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +322,8 @@
 				030D47B21501BFE9005C2891 /* HelpController.m */,
 				030D47C41501BFE9005C2891 /* RSWebView.h */,
 				030D47C51501BFE9005C2891 /* RSWebView.m */,
+				039DDCB31510506500264258 /* RSWindow.h */,
+				039DDCB41510506500264258 /* RSWindow.m */,
 				030D479C1501B852005C2891 /* MainMenu.xib */,
 				031610CE14ECBDB5001FFC9F /* Supporting Files */,
 			);
@@ -325,6 +333,8 @@
 		031610CE14ECBDB5001FFC9F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				039DDCAF15104F2D00264258 /* DOMElement+RSLDOMExtensions.h */,
+				039DDCB015104F2D00264258 /* DOMElement+RSLDOMExtensions.m */,
 				030D47AF1501BFE9005C2891 /* GCGenericTableController.h */,
 				030D47B01501BFE9005C2891 /* GCGenericTableController.m */,
 				030D47B61501BFE9005C2891 /* ResponderTrace.h */,
@@ -425,6 +435,8 @@
 				030D47CC1501BFE9005C2891 /* RSTrixie.m in Sources */,
 				030D47D21501BFE9005C2891 /* RSWebView.m in Sources */,
 				034304EE150C8910007DC04A /* RSIntermediateRuleDelegate.m in Sources */,
+				039DDCB115104F2D00264258 /* DOMElement+RSLDOMExtensions.m in Sources */,
+				039DDCB51510506500264258 /* RSWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

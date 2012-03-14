@@ -10,6 +10,9 @@
 
 @interface RSWebView : WebView
 
+@property (assign) NSTrackingRectTag trackingRectTag;
+
 - (BOOL) acceptsFirstResponder;
+
 
 @end
