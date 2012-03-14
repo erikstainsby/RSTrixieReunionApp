@@ -2,4 +2,19 @@
 <Bucket
    type = "0"
    version = "1.0">
+   <FileBreakpoints>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "RSTrixie/RSTrixie/PreferencesController.h"
+         timestampString = "353455323.651654"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "22"
+         endingLineNumber = "22"
+         landmarkName = "@interface PreferencesController"
+         landmarkType = "2">
+      </FileBreakpoint>
+   </FileBreakpoints>
 </Bucket>

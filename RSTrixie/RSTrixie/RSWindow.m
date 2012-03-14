@@ -10,10 +10,11 @@
 
 @implementation RSWindow
 
+@synthesize mouseIsOverWebView;
 @synthesize webview;
 
 - (void) awakeFromNib {
-	
+
 }
 
 - (BOOL) acceptsFirstResponder {
@@ -24,22 +25,27 @@
 }
 
 - (void) mouseDown:(NSEvent *)theEvent {
-	
+	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 }
 - (void) mouseUp:(NSEvent *)theEvent {
-	
+	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 }
 
 - (void) mouseEntered:(NSEvent *)theEvent {
-	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
+	[self setMouseIsOverWebView:YES];
 }
 - (void) mouseExited:(NSEvent *)theEvent {
-	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
+	[self setMouseIsOverWebView:NO];
 }
-
+ 
 - (void) sendEvent:(NSEvent *)theEvent {
-	if([theEvent type] == NSLeftMouseUp ) {
-		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"LEFT MOUSE UP");
+	if([theEvent type] == NSLeftMouseDown && mouseIsOverWebView) {
+		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"WebView mouseDown");
+
+		[[NSNotificationCenter defaultCenter] postNotificationName:nnRSWebViewLeftMouseDownEventNotification object:theEvent];
+	}
+	else if([theEvent type] == NSLeftMouseUp && mouseIsOverWebView) {
+		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"WebView mouseUp");
 	}
 	else {
 		[super sendEvent: theEvent];

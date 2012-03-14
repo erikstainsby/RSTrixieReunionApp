@@ -14,7 +14,6 @@
 @interface RSAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (retain) IBOutlet NSWindow * window;
-	//@property (retain) IBOutlet RSTrixieEditor * editorController;
 @property (retain) IBOutlet RSTrixie * browserController;
 
 @end

@@ -333,7 +333,7 @@
 				<bool key="NSAnimates">YES</bool>
 			</object>
 			<object class="NSCustomView" id="627323126">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -342,8 +342,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrameSize">{226, 76}</string>
 						<reference key="NSSuperview" ref="627323126"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSAntiCompressionPriority">{250, 750}</string>
 						<bool key="NSEnabled">YES</bool>
@@ -378,7 +376,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{17, 77}, {192, 17}}</string>
 						<reference key="NSSuperview" ref="627323126"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="121226275"/>
 						<string key="NSReuseIdentifierKey">_NS:1505</string>
 						<bool key="NSEnabled">YES</bool>
@@ -405,8 +402,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{226, 96}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="160797274"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="NSClassName">NSView</string>
@@ -598,7 +593,7 @@
 																			<string key="NSFrameSize">{1177, 171}</string>
 																			<reference key="NSSuperview" ref="49123687"/>
 																			<reference key="NSWindow"/>
-																			<reference key="NSNextKeyView" ref="845830560"/>
+																			<reference key="NSNextKeyView" ref="651925574"/>
 																			<string key="NSReuseIdentifierKey">_NS:13</string>
 																			<bool key="NSEnabled">YES</bool>
 																			<object class="NSTableHeaderView" key="NSHeaderView" id="39418614">
@@ -822,7 +817,7 @@
 															<string key="NSFrame">{{0, 34}, {1179, 189}}</string>
 															<reference key="NSSuperview" ref="210682970"/>
 															<reference key="NSWindow"/>
-															<reference key="NSNextKeyView" ref="651925574"/>
+															<reference key="NSNextKeyView" ref="49123687"/>
 															<string key="NSReuseIdentifierKey">_NS:9</string>
 															<int key="NSsFlags">133682</int>
 															<reference key="NSVScroller" ref="845830560"/>
@@ -1143,7 +1138,7 @@
 															<string key="NSFrameSize">{340, 171}</string>
 															<reference key="NSSuperview" ref="357550184"/>
 															<reference key="NSWindow"/>
-															<reference key="NSNextKeyView" ref="34185808"/>
+															<reference key="NSNextKeyView" ref="359261529"/>
 															<string key="NSReuseIdentifierKey">_NS:13</string>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTableHeaderView" key="NSHeaderView" id="401458737">
@@ -1295,7 +1290,7 @@
 											<string key="NSFrame">{{-1, 35}, {342, 189}}</string>
 											<reference key="NSSuperview" ref="415333484"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="359261529"/>
+											<reference key="NSNextKeyView" ref="357550184"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<int key="NSsFlags">133682</int>
 											<reference key="NSVScroller" ref="34185808"/>
@@ -1750,7 +1745,6 @@
 													<string key="NSFrame">{{212, 4}, {110, 25}}</string>
 													<reference key="NSSuperview" ref="412937366"/>
 													<reference key="NSWindow"/>
-													<reference key="NSNextKeyView"/>
 													<string key="NSReuseIdentifierKey">_NS:9</string>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="937041627">
@@ -1983,6 +1977,16 @@
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
+			<object class="NSCustomView" id="102826332">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">268</int>
+				<string key="NSFrameSize">{20, 20}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
+				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<string key="NSClassName">LocatorView</string>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -1994,14 +1998,6 @@
 						<reference key="destination" ref="1005"/>
 					</object>
 					<int key="connectionID">278</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">popover</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="631609800"/>
-					</object>
-					<int key="connectionID">336</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2138,6 +2134,14 @@
 						<reference key="destination" ref="885331225"/>
 					</object>
 					<int key="connectionID">487</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">locator</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="102826332"/>
+					</object>
+					<int key="connectionID">499</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -2329,7 +2333,7 @@
 						<reference key="source" ref="631609800"/>
 						<reference key="destination" ref="384701518"/>
 					</object>
-					<int key="connectionID">334</int>
+					<int key="connectionID">488</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2337,7 +2341,7 @@
 						<reference key="source" ref="631609800"/>
 						<reference key="destination" ref="384701518"/>
 					</object>
-					<int key="connectionID">343</int>
+					<int key="connectionID">489</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3262,6 +3266,11 @@
 						<reference key="object" ref="394766797"/>
 						<reference key="parent" ref="459760543"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">498</int>
+						<reference key="object" ref="102826332"/>
+						<reference key="parent" ref="1002"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -3395,6 +3404,7 @@
 					<string>480.IBPluginDependency</string>
 					<string>481.IBPluginDependency</string>
 					<string>482.IBPluginDependency</string>
+					<string>498.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
 					<string>9.IBPluginDependency</string>
@@ -3559,6 +3569,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -3573,7 +3584,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">487</int>
+			<int key="maxID">499</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3634,6 +3645,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/HelpController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">LocatorView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/LocatorView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -3841,30 +3860,24 @@
 							<string>actionHelp</string>
 							<string>actionMenu</string>
 							<string>actionPanel</string>
-							<string>actionPlugins</string>
-							<string>box1</string>
-							<string>box2</string>
-							<string>box3</string>
 							<string>comment</string>
 							<string>commentPanel</string>
 							<string>conditionHelp</string>
 							<string>conditionMenu</string>
 							<string>conditionPanel</string>
-							<string>conditionPlugins</string>
-							<string>conditionPopover</string>
 							<string>exportEditor</string>
 							<string>exportPanel</string>
+							<string>filterPopover</string>
 							<string>intermediateDelegate</string>
 							<string>intermediateTable</string>
-							<string>pageDict</string>
-							<string>popover</string>
+							<string>locator</string>
 							<string>reactionHelp</string>
 							<string>reactionMenu</string>
 							<string>reactionPanel</string>
-							<string>reactionPlugins</string>
 							<string>reactionPopover</string>
 							<string>ruleTable</string>
 							<string>ruleTableData</string>
+							<string>triggerPopover</string>
 							<string>urlLocationBox</string>
 							<string>webview</string>
 						</object>
@@ -3873,30 +3886,24 @@
 							<string>NSButton</string>
 							<string>NSPopUpButton</string>
 							<string>NSView</string>
-							<string>NSArray</string>
-							<string>NSBox</string>
-							<string>NSBox</string>
-							<string>NSBox</string>
 							<string>NSTextField</string>
 							<string>NSView</string>
 							<string>NSButton</string>
 							<string>NSPopUpButton</string>
 							<string>NSView</string>
-							<string>NSArray</string>
-							<string>NSPopover</string>
 							<string>NSTextView</string>
 							<string>NSPanel</string>
+							<string>NSPopover</string>
 							<string>RSIntermediateRuleDelegate</string>
 							<string>NSTableView</string>
-							<string>NSDictionary</string>
-							<string>NSPopover</string>
+							<string>LocatorView</string>
 							<string>NSButton</string>
 							<string>NSPopUpButton</string>
 							<string>NSView</string>
-							<string>NSArray</string>
 							<string>NSPopover</string>
 							<string>NSTableView</string>
 							<string>NSMutableArray</string>
+							<string>NSPopover</string>
 							<string>NSComboBox</string>
 							<string>WebView</string>
 						</object>
@@ -3908,30 +3915,24 @@
 							<string>actionHelp</string>
 							<string>actionMenu</string>
 							<string>actionPanel</string>
-							<string>actionPlugins</string>
-							<string>box1</string>
-							<string>box2</string>
-							<string>box3</string>
 							<string>comment</string>
 							<string>commentPanel</string>
 							<string>conditionHelp</string>
 							<string>conditionMenu</string>
 							<string>conditionPanel</string>
-							<string>conditionPlugins</string>
-							<string>conditionPopover</string>
 							<string>exportEditor</string>
 							<string>exportPanel</string>
+							<string>filterPopover</string>
 							<string>intermediateDelegate</string>
 							<string>intermediateTable</string>
-							<string>pageDict</string>
-							<string>popover</string>
+							<string>locator</string>
 							<string>reactionHelp</string>
 							<string>reactionMenu</string>
 							<string>reactionPanel</string>
-							<string>reactionPlugins</string>
 							<string>reactionPopover</string>
 							<string>ruleTable</string>
 							<string>ruleTableData</string>
+							<string>triggerPopover</string>
 							<string>urlLocationBox</string>
 							<string>webview</string>
 						</object>
@@ -3948,22 +3949,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">actionPanel</string>
 								<string key="candidateClassName">NSView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">actionPlugins</string>
-								<string key="candidateClassName">NSArray</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">box1</string>
-								<string key="candidateClassName">NSBox</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">box2</string>
-								<string key="candidateClassName">NSBox</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">box3</string>
-								<string key="candidateClassName">NSBox</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">comment</string>
@@ -3986,20 +3971,16 @@
 								<string key="candidateClassName">NSView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">conditionPlugins</string>
-								<string key="candidateClassName">NSArray</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">conditionPopover</string>
-								<string key="candidateClassName">NSPopover</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">exportEditor</string>
 								<string key="candidateClassName">NSTextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">exportPanel</string>
 								<string key="candidateClassName">NSPanel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">filterPopover</string>
+								<string key="candidateClassName">NSPopover</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">intermediateDelegate</string>
@@ -4010,12 +3991,8 @@
 								<string key="candidateClassName">NSTableView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">pageDict</string>
-								<string key="candidateClassName">NSDictionary</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">popover</string>
-								<string key="candidateClassName">NSPopover</string>
+								<string key="name">locator</string>
+								<string key="candidateClassName">LocatorView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">reactionHelp</string>
@@ -4030,10 +4007,6 @@
 								<string key="candidateClassName">NSView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">reactionPlugins</string>
-								<string key="candidateClassName">NSArray</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">reactionPopover</string>
 								<string key="candidateClassName">NSPopover</string>
 							</object>
@@ -4044,6 +4017,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">ruleTableData</string>
 								<string key="candidateClassName">NSMutableArray</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">triggerPopover</string>
+								<string key="candidateClassName">NSPopover</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">urlLocationBox</string>

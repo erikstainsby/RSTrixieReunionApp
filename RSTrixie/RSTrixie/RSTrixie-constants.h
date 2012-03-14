@@ -12,6 +12,8 @@
 extern NSString * const nnRSTrixieReloadJavascriptNotification;
 extern NSString * const nnRSTrixieStoreNewRuleNotification;
 
+extern NSString * const nnRSWebViewLeftMouseDownEventNotification;
+
 extern NSString * const RSTRIXIE_APP_SUPPORT_DIR;
 extern NSString * const RSTRIXIE_WORKING_DIR;
 

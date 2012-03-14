@@ -67,6 +67,7 @@
 		036443CE150AD898003623AA /* ReactionToggle.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 036443CD150AD898003623AA /* ReactionToggle.bundle */; };
 		039DDCB115104F2D00264258 /* DOMElement+RSLDOMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DDCB015104F2D00264258 /* DOMElement+RSLDOMExtensions.m */; };
 		039DDCB51510506500264258 /* RSWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DDCB41510506500264258 /* RSWindow.m */; };
+		039DDD9F151150E500264258 /* LocatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DDD9E151150E500264258 /* LocatorView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -206,6 +207,8 @@
 		039DDCB015104F2D00264258 /* DOMElement+RSLDOMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOMElement+RSLDOMExtensions.m"; sourceTree = "<group>"; };
 		039DDCB31510506500264258 /* RSWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWindow.h; sourceTree = "<group>"; };
 		039DDCB41510506500264258 /* RSWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWindow.m; sourceTree = "<group>"; };
+		039DDD9D151150E500264258 /* LocatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocatorView.h; sourceTree = "<group>"; };
+		039DDD9E151150E500264258 /* LocatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocatorView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +325,8 @@
 				030D47B21501BFE9005C2891 /* HelpController.m */,
 				030D47C41501BFE9005C2891 /* RSWebView.h */,
 				030D47C51501BFE9005C2891 /* RSWebView.m */,
+				039DDD9D151150E500264258 /* LocatorView.h */,
+				039DDD9E151150E500264258 /* LocatorView.m */,
 				039DDCB31510506500264258 /* RSWindow.h */,
 				039DDCB41510506500264258 /* RSWindow.m */,
 				030D479C1501B852005C2891 /* MainMenu.xib */,
@@ -437,6 +442,7 @@
 				034304EE150C8910007DC04A /* RSIntermediateRuleDelegate.m in Sources */,
 				039DDCB115104F2D00264258 /* DOMElement+RSLDOMExtensions.m in Sources */,
 				039DDCB51510506500264258 /* RSWindow.m in Sources */,
+				039DDD9F151150E500264258 /* LocatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

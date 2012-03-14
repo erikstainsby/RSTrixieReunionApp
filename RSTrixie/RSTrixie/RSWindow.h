@@ -11,6 +11,7 @@
 
 @interface RSWindow : NSWindow
 
+@property (assign) BOOL mouseIsOverWebView;
 @property (retain) IBOutlet WebView * webview;
 
 - (BOOL) acceptsFirstResponder;

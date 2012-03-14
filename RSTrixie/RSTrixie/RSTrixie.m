@@ -16,10 +16,11 @@
 
 @implementation RSTrixie
 
-
 #ifndef nnRSSWebviewFrameDidFinishLoad
 #define nnRSSWebviewFrameDidFinishLoad @"nnRSSWebviewFrameDidFinishLoad"
 #endif
+
+@synthesize locator;
 
 @synthesize resourceCache;
 @synthesize history;
@@ -27,16 +28,16 @@
 @synthesize webview;
 @synthesize pageDict;
 
-@synthesize popover = _popover;
+@synthesize triggerPopover = _triggerPopover;
 @synthesize reactionPopover = _reactionPopover;
-@synthesize conditionPopover = _conditionPopover;
+@synthesize filterPopover = _filterPopover;
 
 @synthesize exportPanel;
 @synthesize exportEditor;
 
-@synthesize box1;
-@synthesize box2;
-@synthesize box3;
+//@synthesize box1;
+//@synthesize box2;
+//@synthesize box3;
 
 @synthesize actionPanel;		// custom view
 @synthesize reactionPanel;		// custom view
@@ -90,6 +91,7 @@
 		[ruleTable setDelegate: self];
 		ruleTableData = [NSMutableArray array];
 		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(placeLocator:) name:nnRSWebViewLeftMouseDownEventNotification object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(injectScript:) name:nnRSTrixieReloadJavascriptNotification object:nil];
     }
     return self;
@@ -100,8 +102,12 @@
 - (void) windowDidLoad {
 	
     [super windowDidLoad];
-	NSMenu * menu = [[NSMenu alloc] init];
 	
+	NSPoint pt = NSMakePoint([self window].frame.size.width, [self window].frame.size.height);
+	[locator setFrameOrigin:pt];
+	[[[self window] contentView] addSubview:locator];
+	
+	NSMenu * menu = [[NSMenu alloc] init];
 	for(RSActionPlugin * p in actionPlugins)
 	{
 		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p pluginName] action:@selector(showActionPlugin:) keyEquivalent:@""];
@@ -257,7 +263,6 @@
 	[intermediateDelegate addComment: rule];
 	[[self comment] setStringValue:@""];
 }
-
 - (IBAction)	addActionToIntermediateTable:(id)sender {
 	
 	RSActionRule * actionRule = [[RSActionRule alloc] init];
@@ -275,14 +280,12 @@
 	[intermediateDelegate addActionRule: actionRule];
 	[activeActionPlugin resetForm];
 }
-
--(IBAction) addReactionToIntermediateTable:(id)sender {
+- (IBAction)	addReactionToIntermediateTable:(id)sender {
 	RSReactionRule * reactionRule = [[RSReactionRule alloc] init];
 	[reactionRule setScript: [activeReactionPlugin emitScript]];
 	[intermediateDelegate addReactionRule:reactionRule];
 }
-
--(IBAction) addConditionToIntermediateTable:(id)sender {
+- (IBAction)	addConditionToIntermediateTable:(id)sender {
 	RSConditionRule * conditionRule = [[RSConditionRule alloc] init];
 	[conditionRule setScript: [activeConditionPlugin expression]];	
 	[intermediateDelegate addConditionRule:conditionRule];
@@ -297,8 +300,7 @@
 	[ruleTableData removeObjectsAtIndexes:rows];
 	[ruleTable reloadData];
 }
-
-- (IBAction) showExportPanel:(id)sender {
+- (IBAction)	showExportPanel:(id)sender {
 	
 		// retrieve the script lines from the tableView' ruleData array
 	NSString * script = [self despoolScript];
@@ -329,17 +331,26 @@
 	[exportPanel orderFront:sender];
 }
 
-
+- (void)		placeLocator:(NSNotification*) nota {
+	
+	NSEvent * event = [nota object];
+	NSPoint pt = [event locationInWindow];
+	NSRect f = [locator frame];
+	pt.x -= f.size.width + 10;
+	pt.y -= f.size.height/2;
+	[locator setFrameOrigin:pt];
+	
+}
 
 
 #pragma mark - Table DataSource & Delegate support methods
 
-- (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView {
+- (NSInteger)	numberOfRowsInTableView:(NSTableView *)tableView {
 		//	NSLog(@"%s- [%04d] ruleTableData count: %lu", __PRETTY_FUNCTION__, __LINE__, [ruleTableData count]);
 	return [ruleTableData count];
 }
 
-- (id) tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+- (id)			tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
 		//	NSLog(@"%s- [%04d] column %@, row %lu", __PRETTY_FUNCTION__, __LINE__, [tableColumn identifier], row);
 	if([[tableColumn identifier] isEqualToString:@"rowid"]) {
 		return [NSNumber numberWithInteger:row];
@@ -348,7 +359,7 @@
 	return [rule valueForKey:[tableColumn identifier]];	
 }
 
-- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+- (void)		tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
 	
 	NSMutableDictionary * rowData = [ruleTableData objectAtIndex:rowIndex];
 	[rowData setValue:anObject forKey:[aTableColumn identifier]];
@@ -366,7 +377,7 @@
 	return script;
 }
 
-- (void) appendRule:(RSTrixieRule *) rule {
+- (void)		appendRule:(RSTrixieRule *) rule {
 	
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 		// add new rule
@@ -380,7 +391,7 @@
 
 #pragma mark - Browser methods
 
-- (BOOL) scanCacheForResourceWithName:(NSString*)resourceName {
+- (BOOL)		scanCacheForResourceWithName:(NSString*)resourceName {
 
 	for(WebResource * wr in resourceCache) {
 		if( [[[wr URL] lastPathComponent] hasPrefix:resourceName] ) 
@@ -392,7 +403,7 @@
 	return NO;
 }
 
-- (void) webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
+- (void)		webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
 	if( [sender mainFrame] == frame )
 	{
 			//		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
@@ -439,7 +450,7 @@
 	}
 }
 
-- (IBAction) goForwardOrBack:(id)sender {
+- (IBAction)	goForwardOrBack:(id)sender {
 	if( [sender selectedSegment] == 0 && [webview canGoBack] ) 
 	{
 		[webview goBack];
@@ -456,22 +467,22 @@
 		[history addObject:item];
 	}
 }
-
-- (void) webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame {
+	
+- (void)		webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame {
 	if( [[sender mainFrame] isEqual: frame] )
 	{
 		[[sender window] setTitle: title];
 	}
 }
 
-- (void) webView:(WebView*) sender makeFirstResponder:(NSResponder *)responder { 
+- (void)		webView:(WebView*) sender makeFirstResponder:(NSResponder *)responder { 
 	if( [responder respondsToSelector:@selector(acceptsFirstResponder:)] )
 	{
 		[responder becomeFirstResponder];
 	}
 }
 
-- (NSString *) doctypeString:(DOMDocumentType*)doctype {
+- (NSString *)	doctypeString:(DOMDocumentType*)doctype {
 	NSString * string = @"<!doctype";
 	
 	if([[doctype name] length] > 0) string = [string stringByAppendingFormat:@" %@",[doctype name]];
@@ -483,7 +494,7 @@
 	return string;
 }
 
-- (NSString *) selectorForDOMNode:(DOMNode*)node {
+- (NSString *)	selectorForDOMNode:(DOMNode*)node {
 	
 	NSString * selector = @"";
 	DOMElement * el = nil;
@@ -511,7 +522,7 @@
 	return selector;
 }
 
-- (NSArray *)  webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems {
+- (NSArray *)	webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems {
 	
 	NSString * nodeSelector = [self selectorForDOMNode:[element objectForKey:WebElementDOMNodeKey]];
 	
@@ -558,9 +569,10 @@
 }
 
 
+
 #pragma mark - NSComboBox datasource methods 
 
-- (NSInteger) numberOfItemsInComboBox:(NSComboBox *)aComboBox {
+- (NSInteger)	numberOfItemsInComboBox:(NSComboBox *)aComboBox {
 	return [history count];
 }
 
@@ -572,15 +584,15 @@
 
 #pragma mark - relay 
 
-- (IBAction) quickSetActionSelector:(id)sender {
+- (IBAction)	quickSetActionSelector:(id)sender {
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 	[self setActionSelectorStringValue:[sender representedObject]];
 }
-- (IBAction) quickSetReactionSelector:(id)sender {
+- (IBAction)	quickSetReactionSelector:(id)sender {
 		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 	[self setReactionSelectorStringValue:[sender representedObject]];
 }
-- (IBAction) quickSetConditionSelector:(id)sender {
+- (IBAction)	quickSetConditionSelector:(id)sender {
 		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 	[self setConditionSelectorStringValue:[sender representedObject] ];
 }
@@ -588,12 +600,11 @@
 
 #pragma mark - Receive instruction to reload html, insert jQuery/-UI if required, and injecting the custom behaviours
 
-- (IBAction) reloadScriptIntoPage:(id)sender {
+- (IBAction)	reloadScriptIntoPage:(id)sender {
 	[[webview mainFrame] reloadFromOrigin];
 	[self injectScript];
 }
-
-- (void) injectScript {
+- (void)		injectScript {
 	
 		// retrieve the script lines from the tableView' ruleData array
 	NSString * script = [self despoolScript];
