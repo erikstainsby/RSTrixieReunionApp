@@ -11,6 +11,7 @@
 NSString * const nnRSTrixieReloadJavascriptNotification = @"nnRSTrixieReloadJavascriptNotification";
 NSString * const nnRSTrixieStoreNewRuleNotification = @"nnRSTrixieStoreNewRuleNotification";
 
+NSString * const nnRSWebViewFrameDidFinishLoad = @"nnRSWebViewFrameDidFinishLoad";
 NSString * const nnRSWebViewLeftMouseDownEventNotification = @"nnRSWebViewLeftMouseDownEventNotification";
 
 NSString * const RSTRIXIE_APP_SUPPORT_DIR = @"Roaring Sky";

@@ -16,9 +16,6 @@
 
 @implementation RSTrixie
 
-#ifndef nnRSSWebviewFrameDidFinishLoad
-#define nnRSSWebviewFrameDidFinishLoad @"nnRSSWebviewFrameDidFinishLoad"
-#endif
 
 @synthesize locator;
 
@@ -34,10 +31,6 @@
 
 @synthesize exportPanel;
 @synthesize exportEditor;
-
-//@synthesize box1;
-//@synthesize box2;
-//@synthesize box3;
 
 @synthesize actionPanel;		// custom view
 @synthesize reactionPanel;		// custom view
@@ -367,16 +360,6 @@
 	[ruleTable reloadData];
 }
 
-
-- (NSString *) despoolScript {
-	NSString * 	script = @"";
-	for(RSTrixieRule * rule in ruleTableData)
-	{
-		script = [script stringByAppendingFormat:@"%@\n",[rule emitScript]];
-	}
-	return script;
-}
-
 - (void)		appendRule:(RSTrixieRule *) rule {
 	
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
@@ -388,9 +371,34 @@
 	[self injectScript];
 }
 
+- (NSString *) despoolScript {
+	NSString * 	script = @"";
+	for(RSTrixieRule * rule in ruleTableData)
+	{
+		script = [script stringByAppendingFormat:@"%@\n",[rule emitScript]];
+	}
+	return script;
+}
 
-#pragma mark - Browser methods
+#pragma mark - WebView Browser methods
 
+- (IBAction)	goForwardOrBack:(id)sender {
+	if( [sender selectedSegment] == 0 && [webview canGoBack] ) 
+	{
+		[webview goBack];
+	}
+	else if( [sender selectedSegment] == 1 && [webview canGoForward] ) 
+	{
+		[webview goForward];
+	}
+	[urlLocationBox setStringValue:[webview mainFrameURL]];
+	
+	// update history
+	WebHistoryItem * item = [[webview backForwardList] currentItem];
+	if( ! [history containsObject:item]) {
+		[history addObject:item];
+	}
+}
 - (BOOL)		scanCacheForResourceWithName:(NSString*)resourceName {
 
 	for(WebResource * wr in resourceCache) {
@@ -438,7 +446,7 @@
 							   bodyString,@"body", 
 							   nil];
 		
-		[[NSNotificationCenter defaultCenter] postNotificationName:nnRSSWebviewFrameDidFinishLoad object:pageDict];
+		[[NSNotificationCenter defaultCenter] postNotificationName:nnRSWebViewFrameDidFinishLoad object:pageDict];
 		
 //		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, [pageDict valueForKey:@"doctype"]);
 //		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, [pageDict valueForKey:@"htmlTag"]);
@@ -450,24 +458,6 @@
 	}
 }
 
-- (IBAction)	goForwardOrBack:(id)sender {
-	if( [sender selectedSegment] == 0 && [webview canGoBack] ) 
-	{
-		[webview goBack];
-	}
-	else if( [sender selectedSegment] == 1 && [webview canGoForward] ) 
-	{
-		[webview goForward];
-	}
-	[urlLocationBox setStringValue:[webview mainFrameURL]];
-	
-	// update history
-	WebHistoryItem * item = [[webview backForwardList] currentItem];
-	if( ! [history containsObject:item]) {
-		[history addObject:item];
-	}
-}
-	
 - (void)		webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame {
 	if( [[sender mainFrame] isEqual: frame] )
 	{
@@ -493,7 +483,6 @@
 	
 	return string;
 }
-
 - (NSString *)	selectorForDOMNode:(DOMNode*)node {
 	
 	NSString * selector = @"";
@@ -575,12 +564,10 @@
 - (NSInteger)	numberOfItemsInComboBox:(NSComboBox *)aComboBox {
 	return [history count];
 }
-
 - (id) comboBox:(NSComboBox *)aComboBox objectValueForItemAtIndex:(NSInteger)index {
 	WebHistoryItem * item = [history objectAtIndex:index];
 	return [item URLString];
 }
-
 
 #pragma mark - relay 
 
@@ -596,7 +583,6 @@
 		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 	[self setConditionSelectorStringValue:[sender representedObject] ];
 }
-
 
 #pragma mark - Receive instruction to reload html, insert jQuery/-UI if required, and injecting the custom behaviours
 
