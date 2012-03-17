@@ -12,6 +12,7 @@
 #import "NSView+RSPositionView.h"
 #import "RSIntermediateRuleDelegate.h"
 #import "LocatorView.h"
+#import "RSPanelPopoverController.h" 
 
 @interface RSTrixie : NSWindowController < NSComboBoxDataSource, NSComboBoxDelegate, NSTableViewDelegate, NSTableViewDataSource >
 {
@@ -20,6 +21,8 @@
 }
 
 @property (retain) IBOutlet LocatorView * locator;
+
+@property (retain) IBOutlet RSPanelPopoverController * panelPopoverController;
 
 #pragma mark - Web browser props
 

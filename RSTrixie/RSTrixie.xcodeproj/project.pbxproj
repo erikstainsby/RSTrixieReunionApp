@@ -57,6 +57,7 @@
 		031610D414ECBDB5001FFC9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 031610D314ECBDB5001FFC9F /* main.m */; };
 		031610D814ECBDB5001FFC9F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 031610D614ECBDB5001FFC9F /* Credits.rtf */; };
 		031610DB14ECBDB5001FFC9F /* RSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 031610DA14ECBDB5001FFC9F /* RSAppDelegate.m */; };
+		0327EEA1151510330008102A /* RSPanelPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0327EEA0151510330008102A /* RSPanelPopoverController.m */; };
 		034304E4150C7BA9007DC04A /* ActionKeyDown.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 034304E3150C7BA9007DC04A /* ActionKeyDown.bundle */; };
 		034304E7150C7BB6007DC04A /* ActionKeyPress.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 034304E6150C7BB6007DC04A /* ActionKeyPress.bundle */; };
 		034304E9150C7C06007DC04A /* ActionPageLoad.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 034304E8150C7C06007DC04A /* ActionPageLoad.bundle */; };
@@ -194,6 +195,8 @@
 		031610D714ECBDB5001FFC9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		031610D914ECBDB5001FFC9F /* RSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppDelegate.h; sourceTree = "<group>"; };
 		031610DA14ECBDB5001FFC9F /* RSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
+		0327EE9F151510330008102A /* RSPanelPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPanelPopoverController.h; sourceTree = "<group>"; };
+		0327EEA0151510330008102A /* RSPanelPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPanelPopoverController.m; sourceTree = "<group>"; };
 		034304E3150C7BA9007DC04A /* ActionKeyDown.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionKeyDown.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		034304E6150C7BB6007DC04A /* ActionKeyPress.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionKeyPress.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		034304E8150C7C06007DC04A /* ActionPageLoad.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionPageLoad.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -319,6 +322,8 @@
 				030D47BA1501BFE9005C2891 /* RSTrixie.h */,
 				030D47BB1501BFE9005C2891 /* RSTrixie.m */,
 				030D47BC1501BFE9005C2891 /* RSTrixie.xib */,
+				0327EE9F151510330008102A /* RSPanelPopoverController.h */,
+				0327EEA0151510330008102A /* RSPanelPopoverController.m */,
 				034304EC150C8910007DC04A /* RSIntermediateRuleDelegate.h */,
 				034304ED150C8910007DC04A /* RSIntermediateRuleDelegate.m */,
 				030D47B11501BFE9005C2891 /* HelpController.h */,
@@ -443,6 +448,7 @@
 				039DDCB115104F2D00264258 /* DOMElement+RSLDOMExtensions.m in Sources */,
 				039DDCB51510506500264258 /* RSWindow.m in Sources */,
 				039DDD9F151150E500264258 /* LocatorView.m in Sources */,
+				0327EEA1151510330008102A /* RSPanelPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

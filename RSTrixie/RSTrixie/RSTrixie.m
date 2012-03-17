@@ -29,6 +29,8 @@
 @synthesize reactionPopover = _reactionPopover;
 @synthesize filterPopover = _filterPopover;
 
+@synthesize panelPopoverController;
+
 @synthesize exportPanel;
 @synthesize exportEditor;
 
@@ -71,6 +73,7 @@
 		conditionPlugins = [NSMutableArray array];
 		
 		RSTrixieLoader * loader = [[RSTrixieLoader alloc] init];
+		
 		
 		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, loader);
 		
@@ -333,6 +336,7 @@
 	pt.y -= f.size.height/2;
 	[locator setFrameOrigin:pt];
 	
+	[panelPopoverController showPanelPopover:locator];
 }
 
 
