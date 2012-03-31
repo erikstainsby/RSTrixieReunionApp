@@ -11,8 +11,13 @@
 @interface RSPanelPopoverController : NSViewController < NSPopoverDelegate >
 
 @property (weak) IBOutlet NSPopover * popover;
-@property (weak) IBOutlet NSTextField * caption;
+@property (weak) IBOutlet NSBox * box;
+@property (assign) NSInteger activePanelWidth;
+@property (assign) NSInteger activePanelHeight;
+@property (retain) IBOutlet NSButton * nextButton;
+@property (retain) id currentClientPanel;
 
-- (IBAction) showPanelPopover:(id)sender;
+- (void) showPanelPopover:(NSView*)locator activePanel:(NSView*)panel;
+- (IBAction) cancelPopoverSession:(id)sender;
 
 @end

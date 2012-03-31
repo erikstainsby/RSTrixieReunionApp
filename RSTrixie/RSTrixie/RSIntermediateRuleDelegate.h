@@ -15,9 +15,9 @@
 @property (retain) IBOutlet NSMutableArray * rulePartsData;
 
 - (void) addComment: (RSCommentRule *) rule;
-- (void) addActionRule: (RSActionRule *) rule;
-- (void) addReactionRule: (RSReactionRule *) rule;
-- (void) addConditionRule: (RSConditionRule *) rule;
+- (BOOL) addActionRule: (RSActionRule *) rule;
+- (BOOL) addReactionRule: (RSReactionRule *) rule;
+- (BOOL) addFilterRule: (RSConditionRule *) rule;
 
 - (RSTrixieRule *) composeRule;
 

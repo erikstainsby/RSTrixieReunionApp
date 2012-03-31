@@ -17,7 +17,11 @@
 @implementation RSTrixie
 
 
-@synthesize locator;
+@synthesize locator; 
+@synthesize panelPopoverController;
+@synthesize currentPlugin;
+@synthesize tokenCollection;
+@synthesize nextTokenOrigin;
 
 @synthesize resourceCache;
 @synthesize history;
@@ -29,32 +33,30 @@
 @synthesize reactionPopover = _reactionPopover;
 @synthesize filterPopover = _filterPopover;
 
-@synthesize panelPopoverController;
-
 @synthesize exportPanel;
 @synthesize exportEditor;
 
 @synthesize actionPanel;		// custom view
 @synthesize reactionPanel;		// custom view
-@synthesize conditionPanel;		// custom view
+@synthesize filterPanel;		// custom view
 @synthesize commentPanel;
 @synthesize comment;			// NSTextField
 
 @synthesize actionPlugins;		// view controllers 
 @synthesize reactionPlugins;	// view controllers 
-@synthesize conditionPlugins;	// view controllers 
+@synthesize filterPlugins;	// view controllers 
 
 @synthesize actionMenu;			// popup button
 @synthesize reactionMenu;		// popup button
-@synthesize conditionMenu;		// popup button
+@synthesize filterMenu;		// popup button
 
 @synthesize actionHelp;
 @synthesize reactionHelp;
-@synthesize conditionHelp;
+@synthesize filterHelp;
 
 @synthesize activeActionPlugin;
 @synthesize activeReactionPlugin;
-@synthesize activeConditionPlugin;
+@synthesize activeFilterPlugin;
 
 @synthesize ruleTable;
 @synthesize ruleTableData;
@@ -70,16 +72,17 @@
 		
 		actionPlugins = [NSMutableArray array];
 		reactionPlugins = [NSMutableArray array];
-		conditionPlugins = [NSMutableArray array];
+		filterPlugins = [NSMutableArray array];
 		
 		RSTrixieLoader * loader = [[RSTrixieLoader alloc] init];
-		
 		
 		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, loader);
 		
 		[self setActionPlugins:		[loader loadPluginsWithPrefix:@"Action"		ofType:@"bundle"]];
 		[self setReactionPlugins:	[loader loadPluginsWithPrefix:@"Reaction"	ofType:@"bundle"]];
-		[self setConditionPlugins:	[loader loadPluginsWithPrefix:@"Condition"	ofType:@"bundle"]];
+		[self setFilterPlugins:		[loader loadPluginsWithPrefix:@"Condition"	ofType:@"bundle"]];
+		
+		NSLog(@"%s- [%04d] filter plugins loaded: %lu", __PRETTY_FUNCTION__, __LINE__, [filterPlugins count]);
 		
 		[[webview menu] setAutoenablesItems:NO];
 		[webview setMaintainsBackForwardList:YES];
@@ -126,24 +129,28 @@
 	menu2 = nil;
 	
 	NSMenu * menu3 = [[NSMenu alloc] init];	
-	for(RSConditionPlugin * p in conditionPlugins)
+	for(RSConditionPlugin * p in filterPlugins)
 	{
-		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p pluginName] action:@selector(showConditionPlugin:) keyEquivalent:@""];
+		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p pluginName] action:@selector(showFilterPlugin:) keyEquivalent:@""];
 		[menuItem setRepresentedObject:p];
 		[menu3 addItem:menuItem];
-			//		NSLog(@"%s- [%04d] added condition menu item for plugin: %@", __PRETTY_FUNCTION__, __LINE__, [p name]);
+			//		NSLog(@"%s- [%04d] added filter menu item for plugin: %@", __PRETTY_FUNCTION__, __LINE__, [p name]);
 	}
-	[conditionMenu setMenu:menu3]; 
+	[filterMenu setMenu:menu3];
+	menu3 = nil;
+	
 		// now we can set the current plugin's views
 	
-	[self showActionPlugin:		[actionMenu itemAtIndex:0]];
-	[self showReactionPlugin:	[reactionMenu itemAtIndex:0]];
-	[self showConditionPlugin:	[conditionMenu itemAtIndex:0]];
+		//	[self showActionPlugin:		];
+		//	[self showReactionPlugin:	[reactionMenu itemAtIndex:0]];
+		//	[self showFilterPlugin:		[filterMenu itemAtIndex:0]];
 	
 	intermediateDelegate = [[RSIntermediateRuleDelegate alloc] init];
 	[intermediateTable setDelegate:intermediateDelegate];
 	[intermediateTable setDataSource:intermediateDelegate];
 	[intermediateDelegate setRulePartsTable:intermediateTable];
+	 
+	nextTokenOrigin = NSMakePoint(tokenCollection.frame.origin.x+10,0);
 	
 }
 
@@ -160,6 +167,7 @@
 	}
 	[[p view] setFrameTopLeftPoint:actionMenu.frame.origin];
 	
+	currentPlugin = p;
 	activeActionPlugin = p;
 	
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, name);
@@ -177,24 +185,26 @@
 	}
 	[[p view] setFrameTopLeftPoint:reactionMenu.frame.origin];
 	
+	currentPlugin = p;
 	activeReactionPlugin = p;
 	
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, name);
 }
-- (IBAction)	showConditionPlugin:(id)sender {
+- (IBAction)	showFilterPlugin:(id)sender {
 	
 	NSString * name = [sender title];
 	RSConditionPlugin * p  = [sender representedObject];
 	
-	if( activeConditionPlugin == nil) {
-		[conditionPanel addSubview:[p view]];
+	if(activeFilterPlugin == nil) {
+		[filterPanel addSubview:[p view]];
 	}
 	else {
-		[conditionPanel replaceSubview:[activeConditionPlugin view] with:[p view]];
+		[filterPanel replaceSubview:[activeFilterPlugin view] with:[p view]];
 	}
-	[[p view] setFrameTopLeftPoint:conditionMenu.frame.origin];	
+	[[p view] setFrameTopLeftPoint:filterMenu.frame.origin];	
 	
-	activeConditionPlugin = p;
+	currentPlugin = p;
+	activeFilterPlugin = p;
 	
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, name);
 }
@@ -247,11 +257,10 @@
 		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
 	[[activeReactionPlugin targetField] setStringValue:sender];
 }
-- (IBAction)	setConditionSelectorStringValue:(id)sender {
+- (IBAction)	setFilterSelectorStringValue:(id)sender {
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
-		//	[[activeConditionPlugin selectorField] setStringValue:sender];
+		//	[[activefilterPlugin selectorField] setStringValue:sender];
 }
-
 
 - (IBAction)	addCommentToIntermediateTable:(id)sender {
 	RSCommentRule * rule = [[RSCommentRule alloc] init];
@@ -260,11 +269,22 @@
 	[[self comment] setStringValue:@""];
 }
 - (IBAction)	addActionToIntermediateTable:(id)sender {
-	
 	RSActionRule * actionRule = [[RSActionRule alloc] init];
 	[actionRule setEvent:				[activeActionPlugin event]];
 	if([activeActionPlugin hasSelectorField]) {
 		[actionRule setSelector:		[[activeActionPlugin selectorField] stringValue]];
+	}
+	else {
+		NSAlert * alert = [[NSAlert alloc] init];
+		[alert setAlertStyle:NSWarningAlertStyle];
+		[alert setMessageText:@"Unable to save this Trigger"];
+		[alert setInformativeText:@"A Trigger must have a jQuery selector set before it can be saved."];
+		[alert addButtonWithTitle:@"Return"];
+		NSInteger result = [alert runModal];
+		if(result == NSAlertFirstButtonReturn ) {
+				// done.
+		}
+		return; 
 	}
 	if( [activeActionPlugin preventDefaultButton]) {
 		[actionRule setPreventDefault:	[activeActionPlugin preventDefault]];
@@ -272,19 +292,45 @@
 	if( [activeActionPlugin stopBubblingButton]) {
 		[actionRule setStopBubbling:	[activeActionPlugin stopBubbling]];
 	}
-	
-	[intermediateDelegate addActionRule: actionRule];
-	[activeActionPlugin resetForm];
+	if([intermediateDelegate addActionRule: actionRule]) {
+		[activeActionPlugin resetForm];
+	}
 }
 - (IBAction)	addReactionToIntermediateTable:(id)sender {
 	RSReactionRule * reactionRule = [[RSReactionRule alloc] init];
-	[reactionRule setScript: [activeReactionPlugin emitScript]];
+	NSString * script = [activeReactionPlugin emitScript];
+	if(nil == script) {
+		NSAlert * alert = [[NSAlert alloc] init];
+		[alert setAlertStyle:NSCriticalAlertStyle];
+		[alert setMessageText:@"Unable to save this Reaction"];
+		[alert setInformativeText:@"The script fragment failed to save."];
+		[alert addButtonWithTitle:@"Return"];
+		NSInteger result = [alert runModal];
+		if(result == NSAlertFirstButtonReturn ) {
+				// done.
+		}
+		return;
+	}
+	[reactionRule setScript: script];
 	[intermediateDelegate addReactionRule:reactionRule];
 }
-- (IBAction)	addConditionToIntermediateTable:(id)sender {
-	RSConditionRule * conditionRule = [[RSConditionRule alloc] init];
-	[conditionRule setScript: [activeConditionPlugin expression]];	
-	[intermediateDelegate addConditionRule:conditionRule];
+- (IBAction)	addFilterToIntermediateTable:(id)sender {
+	RSConditionRule * filterRule = [[RSConditionRule alloc] init];
+	NSString * script = [activeFilterPlugin expression];
+	if(nil == script) {
+		NSAlert * alert = [[NSAlert alloc] init];
+		[alert setAlertStyle:NSCriticalAlertStyle];
+		[alert setMessageText:@"Unable to save this Filter"];
+		[alert setInformativeText:@"The script fragment failed to save."];
+		[alert addButtonWithTitle:@"Return"];
+		NSInteger result = [alert runModal];
+		if(result == NSAlertFirstButtonReturn ) {
+				// done.
+		}
+		return;
+	}
+	[filterRule setScript: script];	
+	[intermediateDelegate addFilterRule:filterRule];
 }
 
 - (IBAction)	addRule:(id)sender {
@@ -336,9 +382,65 @@
 	pt.y -= f.size.height/2;
 	[locator setFrameOrigin:pt];
 	
-	[panelPopoverController showPanelPopover:locator];
+		// send both the locator and the appropriate plugin set
+	[panelPopoverController showPanelPopover:locator activePanel:actionPanel];
 }
 
+- (RSTokenView*) tokenForPluginWithState:(RSTrixiePlugin*)plugin {
+		
+	RSTokenView * token = [[RSTokenView alloc] init];
+	[token setOpacity: 1.0];
+	if([plugin isKindOfClass:[RSActionPlugin class]]) {
+		[token setFg:[NSColor whiteColor]];
+		[token setBg:[NSColor blueColor]];
+		[token setText:[(RSActionPlugin*)plugin event]];
+	}
+	else if([plugin isKindOfClass:[RSReactionPlugin class]]) {
+		[token setFg:[NSColor whiteColor]];
+		[token setBg:[NSColor redColor]];
+		[token setText:[(RSReactionPlugin*)plugin action]];
+	}
+	else if([plugin isKindOfClass:[RSConditionPlugin class]]) {
+		[token setFg:[NSColor whiteColor]];
+		[token setBg:[NSColor darkGrayColor]];
+		[token setText:[(RSConditionPlugin*)plugin predicate]];
+	}
+	
+	[token setRepresentedObject:plugin];
+
+	return token;
+}
+
+
+- (IBAction)	activatePlugin:(id)sender {
+	
+	if([currentPlugin isKindOfClass:[RSTrixiePlugin class]]) {
+		NSLog(@"%s- [%04d] previous plugin class: %@", __PRETTY_FUNCTION__, __LINE__, [currentPlugin className]);
+			//	RSTokenView * token = [self tokenForPluginWithState:currentPlugin];
+	}
+	
+	if([sender selectedSegment] == 0) {
+			// trigger 
+		[self setCurrentPlugin: [[actionMenu itemAtIndex:([actionMenu indexOfSelectedItem]? [actionMenu indexOfSelectedItem] : 0)] representedObject]];
+		[panelPopoverController showPanelPopover:locator activePanel:actionPanel];
+	}
+	else if([sender selectedSegment] == 1) {
+			// reactions
+		[self setCurrentPlugin: [[reactionMenu itemAtIndex:([reactionMenu indexOfSelectedItem]? [reactionMenu indexOfSelectedItem] : 0)] representedObject]];
+		[panelPopoverController showPanelPopover:locator activePanel:reactionPanel];
+	}
+	else if([sender selectedSegment] == 2) {
+			// filters
+		[self setCurrentPlugin: [[filterMenu itemAtIndex:([filterMenu indexOfSelectedItem]? [filterMenu indexOfSelectedItem] : 0)] representedObject]];
+		[panelPopoverController showPanelPopover:locator activePanel:filterPanel];
+	}
+	else {
+		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"Unsupported segment selected in popover UI. (urk!?)");
+	}
+	NSLog(@"%s- [%04d] current plugin class: %@", __PRETTY_FUNCTION__, __LINE__, [currentPlugin className]);
+} 
+
+   
 
 #pragma mark - Table DataSource & Delegate support methods
 
@@ -346,7 +448,6 @@
 		//	NSLog(@"%s- [%04d] ruleTableData count: %lu", __PRETTY_FUNCTION__, __LINE__, [ruleTableData count]);
 	return [ruleTableData count];
 }
-
 - (id)			tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
 		//	NSLog(@"%s- [%04d] column %@, row %lu", __PRETTY_FUNCTION__, __LINE__, [tableColumn identifier], row);
 	if([[tableColumn identifier] isEqualToString:@"rowid"]) {
@@ -355,7 +456,6 @@
 	RSTrixieRule * rule = [ruleTableData objectAtIndex:row];
 	return [rule valueForKey:[tableColumn identifier]];	
 }
-
 - (void)		tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
 	
 	NSMutableDictionary * rowData = [ruleTableData objectAtIndex:rowIndex];
@@ -374,8 +474,7 @@
 		// send revised script to browser content
 	[self injectScript];
 }
-
-- (NSString *) despoolScript {
+- (NSString *)	despoolScript {
 	NSString * 	script = @"";
 	for(RSTrixieRule * rule in ruleTableData)
 	{
@@ -461,14 +560,12 @@
 		
 	}
 }
-
 - (void)		webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame {
 	if( [[sender mainFrame] isEqual: frame] )
 	{
 		[[sender window] setTitle: title];
 	}
 }
-
 - (void)		webView:(WebView*) sender makeFirstResponder:(NSResponder *)responder { 
 	if( [responder respondsToSelector:@selector(acceptsFirstResponder:)] )
 	{
@@ -514,7 +611,6 @@
 	}
 	return selector;
 }
-
 - (NSArray *)	webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems {
 	
 	NSString * nodeSelector = [self selectorForDOMNode:[element objectForKey:WebElementDOMNodeKey]];
@@ -527,8 +623,8 @@
 	NSMenuItem * item2 = [[NSMenuItem alloc] initWithTitle:@"Set Reaction selector" 
 													action:@selector(quickSetReactionSelector:) 
 											 keyEquivalent:@""];
-	NSMenuItem * item3 = [[NSMenuItem alloc] initWithTitle:@"Set Condition selector" 
-													action:@selector(quickSetConditionSelector:) 
+	NSMenuItem * item3 = [[NSMenuItem alloc] initWithTitle:@"Set filter selector" 
+													action:@selector(quickSetfilterSelector:) 
 											 keyEquivalent:@""];
 	
 	if([[self activeActionPlugin] hasSelectorField] ) {
@@ -547,7 +643,7 @@
 	else {
 		[item2 setEnabled:NO];
 	}
-	if([[self activeConditionPlugin] hasSelectorField]) {
+	if([[self activeFilterPlugin] hasSelectorField]) {
 		[item3 setTarget:self];
 		[item3 setEnabled:YES];
 		[item3 setRepresentedObject:nodeSelector];
@@ -555,7 +651,6 @@
 	else {
 		[item3 setEnabled:NO];
 	}
-	
 	
 	NSMutableArray * myMenu = [NSMutableArray arrayWithObjects:item1,item2,item3,nil];
 	return [myMenu arrayByAddingObjectsFromArray:defaultMenuItems];
@@ -583,9 +678,9 @@
 		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 	[self setReactionSelectorStringValue:[sender representedObject]];
 }
-- (IBAction)	quickSetConditionSelector:(id)sender {
+- (IBAction)	quickSetFilterSelector:(id)sender {
 		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
-	[self setConditionSelectorStringValue:[sender representedObject] ];
+	[self setFilterSelectorStringValue:[sender representedObject] ];
 }
 
 #pragma mark - Receive instruction to reload html, insert jQuery/-UI if required, and injecting the custom behaviours

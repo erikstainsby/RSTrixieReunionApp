@@ -11,8 +11,11 @@
 #import <RSTrixiePlugin/RSTrixie.h>
 #import "NSView+RSPositionView.h"
 #import "RSIntermediateRuleDelegate.h"
-#import "LocatorView.h"
+#import "RSLocatorView.h"
 #import "RSPanelPopoverController.h" 
+#import "RSTokenView.h"
+
+
 
 @interface RSTrixie : NSWindowController < NSComboBoxDataSource, NSComboBoxDelegate, NSTableViewDelegate, NSTableViewDataSource >
 {
@@ -20,9 +23,11 @@
 	BOOL _hasJQueryUI;
 }
 
-@property (retain) IBOutlet LocatorView * locator;
-
+@property (retain) IBOutlet RSLocatorView * locator;
 @property (retain) IBOutlet RSPanelPopoverController * panelPopoverController;
+@property (retain) IBOutlet id currentPlugin; 
+@property (retain) IBOutlet NSBox * tokenCollection;
+@property (assign) NSPoint nextTokenOrigin;
 
 #pragma mark - Web browser props
 
@@ -34,34 +39,34 @@
 
 #pragma mark - Rulte Editor toolbox props
 
-@property (weak) IBOutlet NSPopover *triggerPopover;
-@property (weak) IBOutlet NSPopover *reactionPopover;
-@property (weak) IBOutlet NSPopover *filterPopover;
+@property (weak) IBOutlet NSPopover * triggerPopover;
+@property (weak) IBOutlet NSPopover * reactionPopover;
+@property (weak) IBOutlet NSPopover * filterPopover;
 
 @property (retain) IBOutlet NSPanel * exportPanel;
 @property (retain) IBOutlet NSTextView * exportEditor;
 
 @property (retain) IBOutlet NSView * actionPanel;
 @property (retain) IBOutlet NSView * reactionPanel;
-@property (retain) IBOutlet NSView * conditionPanel;
+@property (retain) IBOutlet NSView * filterPanel;
 @property (retain) IBOutlet NSView * commentPanel;
 @property (retain) IBOutlet NSTextField * comment;
 
 @property (retain) NSArray * actionPlugins;
 @property (retain) NSArray * reactionPlugins;
-@property (retain) NSArray * conditionPlugins;
+@property (retain) NSArray * filterPlugins;
 
 @property (retain) IBOutlet NSPopUpButton * actionMenu;
 @property (retain) IBOutlet NSPopUpButton * reactionMenu;
-@property (retain) IBOutlet NSPopUpButton * conditionMenu;
+@property (retain) IBOutlet NSPopUpButton * filterMenu;
 
 @property (retain) IBOutlet NSButton * actionHelp;
 @property (retain) IBOutlet NSButton * reactionHelp;
-@property (retain) IBOutlet NSButton * conditionHelp;
+@property (retain) IBOutlet NSButton * filterHelp;
 
 @property (retain) RSActionPlugin * activeActionPlugin;
 @property (retain) RSReactionPlugin * activeReactionPlugin;
-@property (retain) RSConditionPlugin * activeConditionPlugin;
+@property (retain) RSConditionPlugin * activeFilterPlugin;
 
 #pragma mark - Rule Table storage props
 
@@ -75,25 +80,26 @@
 
 - (IBAction)	showActionPlugin:(id)sender;
 - (IBAction)	showReactionPlugin:(id)sender;
-- (IBAction)	showConditionPlugin:(id)sender;
+- (IBAction)	showFilterPlugin:(id)sender;
 
 - (NSURL *)		applicationSupportDirectoryURL;
 - (NSArray *)	userlandPluginsWithPrefix:(NSString*)prefix;
 
 - (IBAction)	setActionSelectorStringValue:(id)sender;
 - (IBAction)	setReactionSelectorStringValue:(id)sender;
-- (IBAction)	setConditionSelectorStringValue:(id)sender;
+- (IBAction)	setFilterSelectorStringValue:(id)sender;
 
 - (IBAction)	addCommentToIntermediateTable:(id)sender;
 - (IBAction)	addActionToIntermediateTable:(id)sender;
 - (IBAction)	addReactionToIntermediateTable:(id)sender;
-- (IBAction)	addConditionToIntermediateTable:(id)sender;
+- (IBAction)	addFilterToIntermediateTable:(id)sender;
 
 - (IBAction)	addRule:(id)sender;
 - (IBAction)	removeRule:(id)sender;
 - (IBAction)	showExportPanel:(id)sender;
 
 - (void)		placeLocator:(NSNotification *) nota;
+- (IBAction)	activatePlugin:(id)sender;
 
 
 #pragma mark - Table DataSource & Delegate support methods
@@ -122,7 +128,7 @@
 
 - (IBAction)	quickSetActionSelector:(id)sender;
 - (IBAction)	quickSetReactionSelector:(id)sender;
-- (IBAction)	quickSetConditionSelector:(id)sender;
+- (IBAction)	quickSetFilterSelector:(id)sender;
 
 - (IBAction)	reloadScriptIntoPage:(id)sender;
 - (void)		injectScript;

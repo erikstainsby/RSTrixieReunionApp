@@ -30,24 +30,36 @@
 	[rulePartsData addObject:rowData];
 	[rulePartsTable reloadData];
 }
-- (void) addActionRule: (RSActionRule *) rule {
+- (BOOL) addActionRule: (RSActionRule *) rule {
 
 	NSDictionary * rowData = [NSDictionary dictionaryWithObjectsAndKeys:@"Trigger",@"label",[rule trigger],@"script",rule,@"rule", nil];
-		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, [rowData description]);
-	[rulePartsData addObject:rowData];
-	[rulePartsTable reloadData];
+	if(nil!=rowData) 
+	{
+		[rulePartsData addObject:rowData];
+		[rulePartsTable reloadData];
+		return YES;
+	}
+	return NO;
 }
-- (void) addReactionRule: (RSReactionRule *) rule {
+- (BOOL) addReactionRule: (RSReactionRule *) rule {
 
 	NSDictionary * rowData = [NSDictionary dictionaryWithObjectsAndKeys:@"Response",@"label",[rule script],@"script",rule,@"rule", nil];
-	[rulePartsData addObject:rowData];
-	[rulePartsTable reloadData];
+	if(nil!=rowData) {
+		[rulePartsData addObject:rowData];
+		[rulePartsTable reloadData];
+		return YES;
+	}
+	return NO;
 }
-- (void) addConditionRule: (RSConditionRule *) rule {
+- (BOOL) addFilterRule: (RSConditionRule *) rule {
 
 	NSDictionary * rowData = [NSDictionary dictionaryWithObjectsAndKeys:@"Condition",@"label",[rule script],@"script",rule,@"rule", nil];
-	[rulePartsData addObject:rowData];
-	[rulePartsTable reloadData];
+	if(nil!=rowData) {
+		[rulePartsData addObject:rowData];
+		[rulePartsTable reloadData];
+		return YES;
+	}
+	return NO;
 }
 
 

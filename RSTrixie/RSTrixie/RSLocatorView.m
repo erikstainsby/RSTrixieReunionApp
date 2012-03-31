@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Roaring Sky. All rights reserved.
 //
 
-#import "LocatorView.h"
+#import "RSLocatorView.h"
 
-@implementation LocatorView
+@implementation RSLocatorView
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -25,7 +25,7 @@
 {
     [super drawRect:dirtyRect];
 
-	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
+		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 	
 		// blank my own background first ...
 	CGContextRef ctx = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
